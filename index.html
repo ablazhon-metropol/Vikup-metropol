@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Выкуп авто в Минске за 1 час — Метрополь Авто</title>
+<meta name="description" content="Срочный выкуп автомобилей в Минске. Выезд в течение часа, деньги сразу, договор от юрлица. Trade-in и комиссия. Метрополь Авто.">
+<link rel="canonical" href="https://vikup-metropol.by/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://vikup-metropol.by/">
+<meta property="og:site_name" content="Метрополь Авто">
+<meta property="og:title" content="Выкуп авто в Минске за 1 час. Деньги сразу">
+<meta property="og:description" content="Оценка за 15 минут, выезд к вам, расчёт в день обращения. Trade-in и комиссия. Салоны на Горецкого, 6А и Мазурова, 1.">
+<meta property="og:image" content="https://vikup-metropol.by/assets/hero-showroom.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221c1a'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-size='34' font-weight='900' fill='%23b08d57' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<!--
+  МЕСТО ДЛЯ ПИКСЕЛЯ META/FACEBOOK: вставить базовый код пикселя сюда.
+  Событие заявки уже заложено в JS: fbq('track','Lead') срабатывает при отправке обеих форм.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#221c1a;
+  --panel:#332a25;
+  --ink:#f6f1e9;
+  --muted:#a89d90;
+  --bronze:#b08d57;
+  --champagne:#b39d88;
+  --bronze-soft:rgba(176,141,87,.14);
+  --line:rgba(246,241,233,.09);
+  /* светлая пастель */
+  --cream:#f3e8d7;
+  --cream-card:#fbf5e9;
+  --cream-ink:#201d17;
+  --cream-muted:#6f685c;
+  --cream-line:rgba(32,29,23,.1);
+  --font-d:'Manrope',sans-serif;
+  --font-b:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);color:var(--ink);background:var(--bg);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--bronze);color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--font-d);font-weight:800;letter-spacing:-.01em;line-height:1.12}
+img{display:block;max-width:100%}
+section{padding:64px 0}
+@media(min-width:900px){section{padding:96px 0}.wrap{padding:0 32px}}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(34,28,26,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--font-d);font-weight:800;font-size:18px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.logo em{font-style:normal;color:var(--bronze)}
+.header-right{display:flex;align-items:center;gap:16px}
+.phone{font-family:var(--font-d);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-d);font-weight:700;font-size:15px;padding:14px 26px;min-height:48px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn-bronze{background:var(--bronze);color:#fff}
+.btn-bronze:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(176,141,87,.35)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(244,242,236,.3)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--bronze);color:var(--bronze)}
+.header-cta{display:none}
+@media(min-width:720px){.header-cta{display:inline-flex}}
+
+/* ---------- hero (тёмный, тёплые свечения) ---------- */
+.hero{position:relative;padding:110px 0 64px;overflow:hidden}
+@media(min-width:900px){.hero{padding:150px 0 90px}}
+/* мягкие бежево-бронзовые свечения — глубина фона без картинок */
+.hero::before,.glow::before{content:'';position:absolute;width:620px;height:620px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(205,189,173,.15),transparent 65%)}
+.hero::before{top:-200px;right:-140px}
+.hero::after,.glow::after{content:'';position:absolute;width:700px;height:700px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(179,157,136,.11),transparent 65%)}
+.hero::after{bottom:-260px;left:-180px}
+.glow{position:relative;overflow:hidden}
+.glow::before{top:-220px;left:-160px}
+.glow::after{bottom:-240px;right:-180px}
+.glow .wrap{position:relative;z-index:1}
+.hero-in{position:relative;z-index:1;display:grid;gap:32px}
+@media(min-width:900px){.hero-in{grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}}
+.hero h1{font-size:clamp(40px,9vw,64px);margin-bottom:18px}
+.hero h1 .g{color:var(--bronze)}
+.plashki{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.plashka{font-size:13px;font-weight:500;border:1px solid rgba(179,157,136,.55);color:var(--champagne);border-radius:999px;padding:8px 16px;min-height:36px;display:inline-flex;align-items:center}
+/* фото авто — контент, а не фон: машина читается мгновенно */
+.hero-photo{border-radius:24px;overflow:hidden;position:relative;border:1px solid rgba(176,141,87,.25)}
+.hero-photo img{width:100%;height:240px;object-fit:cover;object-position:center 62%}
+@media(min-width:900px){.hero-photo img{height:360px}}
+.hero-photo .cap{position:absolute;left:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:var(--ink);border:1px solid rgba(176,141,87,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
+/* кнопки мессенджеров под формой */
+.messengers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.messengers a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;font-family:var(--font-d);font-weight:700;font-size:14px;text-decoration:none;color:var(--ink);border:1px solid rgba(244,242,236,.25);transition:border-color .2s,color .2s}
+.messengers a:hover{border-color:var(--bronze);color:var(--bronze)}
+.messengers svg{width:18px;height:18px;fill:currentColor}
+
+/* ---------- форма ---------- */
+.form-card{background:rgba(51,42,37,.88);backdrop-filter:blur(14px);border:1px solid rgba(176,141,87,.3);border-radius:24px;padding:28px}
+@media(min-width:900px){.form-card{padding:36px}}
+.form-card h3{font-size:21px;margin-bottom:6px}
+.form-card>p{font-size:14px;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:12px}
+.field input{width:100%;background:rgba(244,242,236,.05);border:1px solid rgba(244,242,236,.15);border-radius:999px;padding:15px 22px;color:var(--ink);font-family:var(--font-b);font-size:16px;min-height:52px;outline:none;transition:border-color .2s,box-shadow .2s;caret-color:var(--bronze)}
+.field input::placeholder{color:rgba(244,242,236,.4)}
+.field input:focus{border-color:var(--bronze);box-shadow:0 0 0 3px rgba(176,141,87,.18)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-card .btn{width:100%;font-size:16px;padding:17px;margin-top:6px}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* ---------- бегущая строка ---------- */
+.ticker{position:relative;border-top:1px solid rgba(176,141,87,.35);border-bottom:1px solid rgba(176,141,87,.35);overflow:hidden;padding:16px 0;background:#1d1714}
+.ticker-track{display:flex;gap:48px;white-space:nowrap;animation:tick 120s linear infinite;width:max-content}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.tick-item{font-family:var(--font-d);font-weight:600;font-size:14px;display:flex;align-items:center;gap:12px;color:#d9d0c3}
+.tick-item i{width:6px;height:6px;background:var(--bronze);display:inline-block;flex:none;border-radius:2px}
+.tick-item b{font-weight:800;color:var(--bronze)}
+
+/* ---------- светлая пастельная секция ---------- */
+section.light{background:var(--cream);color:var(--cream-ink)}
+section.light .sec-title{color:var(--cream-ink)}
+section.light .step,section.light .why-card,section.light .review{background:var(--cream-card);border-color:var(--cream-line)}
+section.light .step p,section.light .why-card p,section.light .review p,section.light .faq-a p{color:var(--cream-muted)}
+section.light .review-head span{color:var(--cream-muted)}
+section.light .faq-item{border-color:var(--cream-line)}
+section.light .faq-q{color:var(--cream-ink)}
+section.light .number span{color:var(--cream-muted)}
+
+/* ---------- цифры ---------- */
+.numbers{display:grid;grid-template-columns:1fr;gap:32px;text-align:center}
+@media(min-width:720px){.numbers{grid-template-columns:repeat(3,1fr)}}
+.number b{font-family:var(--font-d);font-weight:800;font-size:clamp(44px,10vw,64px);letter-spacing:-.02em;color:var(--bronze);display:block;line-height:1}
+.number span{font-size:14px;color:var(--muted);display:block;margin-top:10px}
+
+/* ---------- заголовки секций ---------- */
+.sec-label{font-size:11px;text-transform:uppercase;letter-spacing:.26em;color:var(--champagne);font-weight:700;margin-bottom:14px}
+section.light .sec-label{color:var(--bronze)}
+.sec-title{font-size:clamp(28px,6.5vw,42px);max-width:560px}
+
+/* ---------- шаги ---------- */
+.steps{display:grid;gap:16px;margin-top:44px}
+@media(min-width:720px){.steps{grid-template-columns:repeat(3,1fr);gap:20px}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:30px 26px}
+.step svg{width:40px;height:40px;stroke:var(--bronze);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:20px}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--muted)}
+.cta-mid{text-align:center;margin-top:48px}
+
+/* ---------- почему нам ---------- */
+.why-grid{display:grid;gap:16px;margin-top:44px}
+@media(min-width:720px){.why-grid{grid-template-columns:1fr 1fr;gap:20px}}
+.why-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 26px;display:flex;gap:18px;align-items:flex-start}
+.why-card svg{width:32px;height:32px;flex:none;stroke:var(--bronze);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.why-card h3{font-size:18px;margin-bottom:6px}
+.why-card p{font-size:14px;color:var(--muted)}
+
+/* ---------- сценарии (тёмные, с фото) ---------- */
+.scen-grid{display:grid;gap:16px;margin-top:44px}
+@media(min-width:720px){.scen-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+.scen{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.scen:hover{transform:translateY(-3px);border-color:rgba(176,141,87,.4)}
+.scen-img{height:180px;overflow:hidden}
+.scen-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.scen:hover .scen-img img{transform:scale(1.05)}
+.scen-body{padding:26px;display:flex;flex-direction:column;flex:1}
+.scen .tag{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:600;color:var(--muted);margin-bottom:12px}
+.scen h3{font-size:22px;margin-bottom:10px}
+.scen p{font-size:14px;color:var(--muted);flex:1}
+.scen .btn{margin-top:22px}
+.scen.featured{border-color:rgba(176,141,87,.55)}
+.scen.featured .tag{color:var(--bronze)}
+
+/* ---------- квиз (блок 5) ---------- */
+.form2{max-width:640px;margin:44px auto 0}
+.quiz-progress{display:flex;gap:8px;margin-bottom:22px}
+.quiz-progress i{height:4px;flex:1;border-radius:2px;background:rgba(244,242,236,.12);transition:background .3s}
+.quiz-progress i.done{background:var(--bronze)}
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+.quiz-step .q{font-family:var(--font-d);font-weight:700;font-size:17px;margin-bottom:14px}
+.quiz-nav{display:flex;gap:12px;margin-top:6px}
+.quiz-nav .btn{flex:1}
+.quiz-nav .btn-back{flex:0 0 110px}
+
+/* ---------- отзывы ---------- */
+.reviews{display:grid;gap:16px;margin-top:44px}
+@media(min-width:720px){.reviews{grid-template-columns:repeat(3,1fr);gap:20px}}
+.review{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 26px}
+.review-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.avatar{width:48px;height:48px;border-radius:50%;background:var(--bronze-soft);border:1px solid rgba(176,141,87,.45);color:var(--bronze);font-family:var(--font-d);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+.review-head b{font-family:var(--font-d);font-size:16px;display:block}
+.review-head span{font-size:13px;color:var(--muted)}
+.review p{font-size:14px;color:#d9d0c3}
+/* TODO: заменить на реальные отзывы и фото клиентов (материалы от заказчика) */
+
+/* ---------- контакты ---------- */
+.contacts-grid{display:grid;gap:32px;margin-top:44px}
+@media(min-width:900px){.contacts-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.contact-block h3{font-size:19px;margin-bottom:10px}
+.contact-block p{font-size:15px;color:var(--muted)}
+.contact-block p a{color:var(--bronze);text-decoration:none;font-weight:600}
+.contact-block a.btn{color:#fff}
+.map{border-radius:20px;overflow:hidden;border:1px solid var(--line);height:300px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.9) contrast(.9)}
+
+/* ---------- faq ---------- */
+.faq-list{margin-top:44px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;text-align:left;font-family:var(--font-d);font-weight:700;font-size:17px;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;color:var(--ink);min-height:44px}
+.faq-q .pm{font-size:24px;font-weight:400;color:var(--bronze);transition:transform .3s;flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+.faq-item.open .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding:0 56px 24px 0;font-size:15px;color:var(--muted)}
+/* TODO: заменить тексты FAQ на согласованные (материалы от заказчика) */
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--muted)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--ink);text-decoration:none}
+
+/* ---------- липкая мобильная кнопка ---------- */
+.sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none}
+.sticky-cta .btn{width:100%;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+@media(max-width:719px){.sticky-cta{display:block}}
+
+/* ---------- баннер с реальным фото (отзывы, контакты) ---------- */
+.deal-banner{margin:32px 0 0;border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--cream-line)}
+.deal-banner img{width:100%;height:220px;object-fit:cover;object-position:center 45%}
+@media(min-width:900px){.deal-banner img{height:320px}}
+.deal-banner figcaption{position:absolute;left:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:#f6f1e9;border:1px solid rgba(179,157,136,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
+.deal-banner.dark{border-color:rgba(179,157,136,.3)}
+.deal-banner + .reviews{margin-top:32px}
+.deal-banner + .contacts-grid{margin-top:36px}
+
+/* ---------- живая площадка (полоса с реальным фото) ---------- */
+.lot{padding:56px 0;position:relative;overflow:hidden}
+@media(min-width:900px){.lot{padding:76px 0}}
+.lot::before{content:'';position:absolute;top:-160px;right:-140px;width:560px;height:560px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(179,157,136,.1),transparent 65%)}
+.lot-in{position:relative;z-index:1;display:grid;gap:28px;align-items:center}
+@media(min-width:900px){.lot-in{grid-template-columns:1.15fr .85fr;gap:56px}}
+.lot-photo{border-radius:24px;overflow:hidden;position:relative;border:1px solid rgba(179,157,136,.3)}
+.lot-photo img{width:100%;height:230px;object-fit:cover;object-position:center 55%}
+@media(min-width:900px){.lot-photo img{height:330px}}
+.lot-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:var(--ink);border:1px solid rgba(179,157,136,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
+.lot-text h2{font-size:clamp(24px,5.5vw,34px);margin-bottom:12px}
+.lot-text p{font-size:15px;color:var(--muted);margin-bottom:22px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:719px){footer{padding-bottom:90px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#">МЕТРОПОЛЬ <em>АВТО</em></a>
+    <div class="header-right">
+      <a class="phone" href="tel:+375296782255">+375 29 678-22-55</a>
+      <a class="btn btn-bronze header-cta" href="#form">Узнать цену</a>
+    </div>
+  </div>
+</header>
+
+<!-- БЛОК 1. Первый экран (тёмный) -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <!-- A/B-тест заголовка: вариант подставляет JS (см. скрипт), заявки помечаются вариантом -->
+      <h1 id="headline">Выкуп авто в Минске за <span class="g">1 час</span>. Деньги сразу</h1>
+      <div class="plashki">
+        <span class="plashka">Наличные в день обращения</span>
+        <span class="plashka">Выезд к вам</span>
+        <span class="plashka">Договор, юрлицо</span>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/hero-showroom.webp" alt="Площадка Метрополь Авто — ряд автомобилей в наличии">
+        <div class="cap">Наша площадка · живое фото</div>
+      </div>
+    </div>
+    <div>
+      <form class="form-card" id="form">
+        <h3>Узнать цену</h3>
+        <p>Перезвоним с конкретной цифрой в течение 15 минут.</p>
+        <div class="field"><input type="text" data-car placeholder="Марка и модель" required></div>
+        <div class="field-row">
+          <div class="field"><input type="number" data-year placeholder="Год" min="1990" max="2026" required></div>
+          <div class="field"><input type="number" data-km placeholder="Пробег, км" min="0" required></div>
+        </div>
+        <div class="field"><input type="tel" data-phone placeholder="+375 (__) ___-__-__" required></div>
+        <button class="btn btn-bronze" type="submit">Узнать цену</button>
+        <div class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        <!-- TODO: Telegram — заменить ссылку на бот «Метрополь Агент», когда дасте username -->
+        <div class="messengers">
+          <a href="https://t.me/+375296782255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.9 4.6L19 19.3c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6L18.6 7c.4-.3-.1-.5-.6-.2L7.9 13.2 3.4 11.8c-1-.3-1-1 .2-1.4l17.3-6.7c.8-.3 1.5.2 1 1.9z"/></svg>Telegram</a>
+          <a href="https://wa.me/375296782255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.1.1.3 0 .5-.4.8-.9 1-.6 1.4.8 1.3 1.7 2.1 3 2.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.5.3.1.2.1.7-.2 1.1z"/></svg>WhatsApp</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Бегущая строка -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- Живая площадка (реальное фото с площадки) -->
+<div class="lot">
+  <div class="wrap lot-in reveal">
+    <figure class="lot-photo">
+      <img src="assets/ploshadka.webp" alt="Площадка Метрополь Авто — автомобили в наличии" loading="lazy">
+      <figcaption>Наша площадка · живое фото</figcaption>
+    </figure>
+    <div class="lot-text">
+      <div class="sec-label">Живая площадка</div>
+      <h2>Это не сток — это мы</h2>
+      <p>Реальный кадр с нашей площадки: каждый день выкупаем, продаём и принимаем авто в зачёт. То, что видите на фото, — машины, которые уже у нас.</p>
+      <a class="btn btn-ghost" href="https://metropol-auto.by/vehicles/" target="_blank" rel="noopener">Смотреть авто в наличии</a>
+    </div>
+  </div>
+</div>
+
+<!-- БЛОК 2. Цифры доверия (кремовый) -->
+<section class="light">
+  <!-- TODO: заменить на реальные цифры (материалы от заказчика) -->
+  <div class="wrap numbers reveal">
+    <div class="number"><b>8</b><span>лет на рынке</span></div>
+    <div class="number"><b>2 400+</b><span>авто выкуплено</span></div>
+    <div class="number"><b>96%</b><span>от рыночной цены платим в среднем</span></div>
+  </div>
+</section>
+
+<!-- БЛОК 3. Как это работает (кремовый) -->
+<section class="light" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal">Как это работает</div>
+    <h2 class="sec-title reveal">Три шага — и деньги у вас</h2>
+    <div class="steps reveal">
+      <div class="step">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+        <h3>Заявка</h3><p>Онлайн или по телефону — 2 минуты.</p>
+      </div>
+      <div class="step">
+        <svg viewBox="0 0 24 24"><path d="M5 11l1.7-4.6A2 2 0 0 1 8.6 5h6.8a2 2 0 0 1 1.9 1.4L19 11m-14 0h14a2 2 0 0 1 2 2v4h-2.5m-13.5 0H3v-4a2 2 0 0 1 2-2z"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M9.3 17.5h5.4"/></svg>
+        <h3>Осмотр и оценка</h3><p>Выезд к вам в течение часа.</p>
+      </div>
+      <div class="step">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg>
+        <h3>Деньги сразу</h3><p>Оформление 30 минут, расчёт на месте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК 4. Почему нам (кремовый) -->
+<section class="light" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal">Почему нам</div>
+    <h2 class="sec-title reveal">Четыре причины продать авто нам</h2>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        <div><h3>Дороже перекупов</h3><p>Мы салон со своим спросом, а не посредники — поэтому платим больше.</p></div>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 12h.01M18 12h.01"/></svg>
+        <div><h3>Деньги сразу наличными</h3><p>Расчёт в день обращения: наличные или перевод на карту.</p></div>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3>Своё юрлицо, прозрачный договор</h3><p>Официальный договор купли-продажи от ООО, помощь с МРЭО.</p></div>
+      </div>
+      <div class="why-card">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <div><h3>Выезд по Минску бесплатно</h3><p>Оценщик приедет к вам — домой, на работу, в сервис.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК 4.5. Три сценария (тёмный, с фото) -->
+<section class="glow">
+  <div class="wrap">
+    <div class="sec-label reveal">Не только выкуп</div>
+    <h2 class="sec-title reveal">Три способа расстаться с авто</h2>
+    <div class="scen-grid reveal">
+      <div class="scen">
+        <div class="scen-img"><img src="assets/money.webp" alt="Белорусские рубли и ключи от авто" loading="lazy"></div>
+        <div class="scen-body">
+          <div class="tag">Быстро</div>
+          <h3>Выкуп</h3>
+          <p>Деньги в день обращения: наличные или на карту. Нужна сумма сразу и без возни — это сюда.</p>
+          <a class="btn btn-ghost" href="#form">Оценить авто</a>
+        </div>
+      </div>
+      <div class="scen featured">
+        <div class="scen-img"><img src="assets/tradein.webp" alt="Сделка trade-in на площадке Метрополь Авто" loading="lazy"></div>
+        <div class="scen-body">
+          <div class="tag">Выгодно</div>
+          <h3>Trade-in</h3>
+          <p>Зачтём ваше авто по максимальной оценке — уезжаете на машине из нашего салона в тот же день.</p>
+          <a class="btn btn-bronze" href="https://metropol-auto.by/vehicles/" target="_blank" rel="noopener">Выбрать авто взамен</a>
+        </div>
+      </div>
+      <div class="scen">
+        <div class="scen-img"><img src="assets/hero-gold.webp" alt="Автомобиль в салоне" loading="lazy" style="object-position:center 60%"></div>
+        <div class="scen-body">
+          <div class="tag">Дороже</div>
+          <h3>Комиссия</h3>
+          <p>Ставим авто на наши площадки и продаём за вас по рыночной цене. Дольше по сроку — больше по деньгам.</p>
+          <a class="btn btn-ghost" href="#form2">Обсудить условия</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК 5. Квиз-форма (тёмный) -->
+<section style="padding-top:0" id="form2">
+  <div class="wrap">
+    <form class="form-card form2 reveal" id="quiz">
+      <h3>Узнайте цену вашего авто</h3>
+      <p>Три шага, 30 секунд — назовём конкретную цифру в течение 15 минут.</p>
+      <div class="quiz-progress"><i class="done"></i><i></i><i></i></div>
+
+      <div class="quiz-step active" data-step="1">
+        <div class="q">Шаг 1. Что за автомобиль?</div>
+        <div class="field"><input type="text" data-car placeholder="Марка и модель · Renault Duster"></div>
+        <div class="quiz-nav"><button type="button" class="btn btn-bronze" data-next>Далее</button></div>
+      </div>
+
+      <div class="quiz-step" data-step="2">
+        <div class="q">Шаг 2. Год и пробег</div>
+        <div class="field-row">
+          <div class="field"><input type="number" data-year placeholder="Год · 2018" min="1990" max="2026"></div>
+          <div class="field"><input type="number" data-km placeholder="Пробег, км" min="0"></div>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="btn btn-ghost btn-back" data-prev>Назад</button>
+          <button type="button" class="btn btn-bronze" data-next>Далее</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="3">
+        <div class="q">Шаг 3. Куда перезвонить?</div>
+        <div class="field"><input type="tel" data-phone placeholder="+375 (__) ___-__-__"></div>
+        <div class="quiz-nav">
+          <button type="button" class="btn btn-ghost btn-back" data-prev>Назад</button>
+          <button class="btn btn-bronze" type="submit">Узнать цену</button>
+        </div>
+        <div class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- БЛОК 6. Отзывы (кремовый) -->
+<section class="light">
+  <div class="wrap">
+    <div class="sec-label reveal">Отзывы</div>
+    <h2 class="sec-title reveal">Клиенты о выкупе</h2>
+    <figure class="deal-banner reveal">
+      <img src="assets/sdelka.webp" alt="Клиент и оценщик Метрополь Авто после сделки" loading="lazy">
+      <figcaption>Живая сделка · наш оценщик и клиент</figcaption>
+    </figure>
+    <div class="reviews reveal">
+      <div class="review">
+        <div class="review-head"><div class="avatar">Д</div><div><b>Дмитрий</b><span>Peugeot 3008</span></div></div>
+        <p>Позвонил в обед — к вечеру деньги были на карте. Цену по телефону подтвердили после осмотра, без торга.</p>
+      </div>
+      <div class="review">
+        <div class="review-head"><div class="avatar">О</div><div><b>Ольга</b><span>Opel Astra</span></div></div>
+        <p>Оценщик приехал на работу, всё оформили за полчаса. Документы полностью взяли на себя.</p>
+      </div>
+      <div class="review">
+        <div class="review-head"><div class="avatar">С</div><div><b>Сергей</b><span>Ford Kuga</span></div></div>
+        <p>Сдал старую в зачёт и уехал на новой в тот же день. Доплатил разницу — всё прозрачно, по договору.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-list reveal" style="margin-top:64px">
+      <div class="faq-item">
+        <button class="faq-q">Сколько времени занимает сделка?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Около часа: осмотр и оценка — до 30 минут, оформление договора и расчёт — ещё 30. При выезде к вам время зависит только от вашего расписания.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Цена по телефону изменится после осмотра?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Нет, если автомобиль соответствует описанию. Называем честную вилку сразу и подтверждаем её на месте.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Выкупаете авто в кредите или залоге?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Да. Погашаем остаток по кредиту в рамках сделки и снимаем обременение, разницу выплачиваем вам.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Кто оформляет документы?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Всё делаем мы: договор купли-продажи от нашего юрлица, помощь с переоформлением в МРЭО. От вас — паспорт и документы на авто.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Можно обменять авто на машину из салона?<span class="pm">+</span></button>
+        <div class="faq-a"><p>Да, работает trade-in: зачтём ваше авто по максимальной оценке, разницу можно доплатить или оформить в кредит. Уезжаете на новом авто в тот же день.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БЛОК 7. Контакты (тёмный) -->
+<section class="glow">
+  <div class="wrap">
+    <div class="sec-label reveal">Контакты</div>
+    <h2 class="sec-title reveal">Ждём вас в салонах</h2>
+    <figure class="deal-banner dark reveal">
+      <img src="assets/salon-fasad.webp" alt="Салон Метрополь Авто на Горецкого, 6А — фасад" loading="lazy">
+      <figcaption>Салон на Горецкого, 6А · живое фото</figcaption>
+    </figure>
+    <div class="contacts-grid reveal">
+      <div class="contact-block">
+        <h3>Салон на Горецкого</h3>
+        <p>г. Минск, ул. Горецкого, 6А</p>
+        <h3 style="margin-top:24px">Салон на Мазурова</h3>
+        <p>г. Минск, ул. Мазурова, 1</p>
+        <h3 style="margin-top:24px">Телефон</h3>
+        <p><a href="tel:+375296782255">+375 29 678-22-55</a> · ежедневно 9:00–21:00</p>
+        <div style="margin-top:24px"><a class="btn btn-bronze" href="#form2">Узнать цену</a></div>
+      </div>
+      <div class="map">
+        <iframe loading="lazy" title="Карта: салоны Метрополь Авто в Минске"
+          src="https://www.google.com/maps?q=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA,+%D1%83%D0%BB.+%D0%93%D0%BE%D1%80%D0%B5%D1%86%D0%BA%D0%BE%D0%B3%D0%BE,+6%D0%90&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="logo" href="#">МЕТРОПОЛЬ <em>АВТО</em></a>
+    <div>© 2026 ООО «Метрополь Авто». Не является публичной офертой.</div>
+  </div>
+</footer>
+
+<!-- Липкая кнопка на мобильном -->
+<div class="sticky-cta"><a class="btn btn-bronze" href="#form">Узнать цену авто</a></div>
+
+<script>
+// ---------- БЕГУЩАЯ СТРОКА ----------
+// 50+ встроенных вариантов — строка не требует постоянных правок.
+// TODO: заменить демонстрационные сделки на реальные по мере накопления.
+// Опционально: если захотите управлять строкой сами — можно подключить Google-таблицу (CSV), скажите мне.
+const TICKER_ITEMS = [
+  ['Выкуплено: VW Passat 2018','41 800 BYN'],
+  ['Выкуплено: Renault Duster 2019','34 200 BYN'],
+  ['Trade-in: Peugeot 3008 → Geely Monjaro',''],
+  ['Выкуплено: Ford Kuga 2020','52 700 BYN'],
+  ['Комиссия: Opel Astra 2021 · продан за 11 дней',''],
+  ['Выкуплено: Changan CS75 Plus 2022','61 300 BYN'],
+  ['Выкуплено: Skoda Octavia 2017','29 900 BYN'],
+  ['Выкуплено: BMW 320d 2016','44 500 BYN'],
+  ['Trade-in: Citroën C4 → Chery Tiggo 8',''],
+  ['Выкуплено: Audi A4 2018','55 200 BYN'],
+  ['Выкуплено: Renault Megane 2017','26 400 BYN'],
+  ['Выкуплено: Geely Coolray 2021','43 100 BYN'],
+  ['Комиссия: VW Tiguan 2019 · продан за 9 дней',''],
+  ['Выкуплено: Peugeot 308 2018','31 700 BYN'],
+  ['Выкуплено после ДТП: Ford Focus 2015','14 800 BYN'],
+  ['Выкуплено: Mercedes C-Class 2017','52 900 BYN'],
+  ['Trade-in: Opel Insignia → Haval Jolion',''],
+  ['Выкуплено: Dongfeng AX7 2021','39 600 BYN'],
+  ['Выкуплено: Citroën C5 Aircross 2020','58 300 BYN'],
+  ['Выкуплено кредитный: Kia Rio 2019 · долг погашен',''],
+  ['Выкуплено: VW Polo 2016','24 700 BYN'],
+  ['Выкуплено: Chery Tiggo 7 Pro 2022','56 800 BYN'],
+  ['Комиссия: BMW X3 2018 · продан за 14 дней',''],
+  ['Выкуплено: Renault Captur 2020','38 900 BYN'],
+  ['Выкуплено: Audi Q3 2019','63 400 BYN'],
+  ['Trade-in: Skoda Rapid → Exeed TXL',''],
+  ['Выкуплено: Opel Mokka 2018','33 500 BYN'],
+  ['Выкуплено не на ходу: Peugeot 407 2008 · эвакуатор наш',''],
+  ['Выкуплено: Ford Mondeo 2017','36 100 BYN'],
+  ['Выкуплено: Haval F7 2021','54 600 BYN'],
+  ['Выкуплено: VW Golf 2015','27 300 BYN'],
+  ['Комиссия: Renault Koleos 2019 · продан за 16 дней',''],
+  ['Выкуплено: BMW X1 2016','47 800 BYN'],
+  ['Выкуплено: Changan CS55 Plus 2022','49 200 BYN'],
+  ['Trade-in: Ford EcoSport → Geely Atlas',''],
+  ['Выкуплено: Citroën Berlingo 2014','21 500 BYN'],
+  ['Выкуплено: Audi A6 2016','58 700 BYN'],
+  ['Выкуплено: Peugeot 2008 2020','44 300 BYN'],
+  ['Выкуплено в залоге: VW Touareg 2014 · обременение снято',''],
+  ['Выкуплено: Exeed LX 2022','57 100 BYN'],
+  ['Выкуплено: Opel Crossland 2019','35 400 BYN'],
+  ['Комиссия: Skoda Kodiaq 2020 · продан за 12 дней',''],
+  ['Выкуплено: Renault Logan 2013','12 900 BYN'],
+  ['Выкуплено: Geely Atlas Pro 2022','59 800 BYN'],
+  ['Trade-in: VW Jetta → Dongfeng Shine',''],
+  ['Выкуплено: Ford Fiesta 2014','18 600 BYN'],
+  ['Выкуплено: BMW 520d 2015','49 700 BYN'],
+  ['Выкуплено после ДТП: Audi A3 2013','16 200 BYN'],
+  ['Выкуплено: Chery Arrizo 8 2023','62 500 BYN'],
+  ['Выкуплено: Peugeot Partner 2012','15 400 BYN'],
+  ['Комиссия: Mercedes GLA 2018 · продан за 10 дней',''],
+  ['Выкуплено: Citroën C3 2017','25 800 BYN'],
+  ['Выкуплено: Dongfeng 580 2021','37 200 BYN'],
+  ['Выкуплено: Skoda Superb 2019','57 900 BYN'],
+  ['Trade-in: Opel Astra → Changan UNI-K',''],
+  ['Выкуплено: VW Caddy 2011','19 300 BYN'],
+];
+
+function renderTicker(items){
+  const html = items
+    .filter(r=>r[0] && r[0].trim())
+    .map(r=>`<span class="tick-item"><i></i>${r[0].trim()}${r[1]&&r[1].trim()?` · <b>${r[1].trim()}</b>`:''}</span>`)
+    .join('');
+  const ticker = document.getElementById('ticker');
+  ticker.innerHTML = html + html; // дублируем для бесшовного цикла
+}
+renderTicker(TICKER_ITEMS);
+
+// scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item = btn.parentElement;
+    const ans = item.querySelector('.faq-a');
+    const open = item.classList.toggle('open');
+    ans.style.maxHeight = open ? ans.scrollHeight+'px' : 0;
+  });
+});
+
+// Маска телефона +375 (__) ___-__-__
+document.querySelectorAll('[data-phone]').forEach(inp=>{
+  inp.addEventListener('input',()=>{
+    let d = inp.value.replace(/\D/g,'');
+    if(d.startsWith('375')) d = d.slice(3);
+    d = d.slice(0,9);
+    let out = '+375';
+    if(d.length>0) out += ' ('+d.slice(0,2);
+    if(d.length>=2) out += ') '+d.slice(2,5);
+    if(d.length>=5) out += '-'+d.slice(5,7);
+    if(d.length>=7) out += '-'+d.slice(7,9);
+    inp.value = out;
+  });
+});
+
+// ---------- A/B-тест заголовка ----------
+// Вариант A: «за 1 час». Вариант B: «оценка за 15 минут».
+// Вариант закрепляется за посетителем (localStorage) и помечается в тексте заявки —
+// так по лидам в WhatsApp видно, какой заголовок конвертит.
+const AB = {
+  a: 'Выкуп авто в Минске за <span class="g">1 час</span>. Деньги сразу',
+  b: 'Узнайте цену авто за <span class="g">15 минут</span>. Выкуп в день обращения'
+};
+let abVariant = localStorage.getItem('ab');
+if(!abVariant){ abVariant = Math.random()<.5 ? 'a' : 'b'; localStorage.setItem('ab', abVariant); }
+document.getElementById('headline').innerHTML = AB[abVariant];
+if(typeof fbq==='function'){ fbq('trackCustom','HeadlineVariant',{variant:abVariant}); }
+
+// ---------- квиз-форма ----------
+document.querySelectorAll('#quiz').forEach(quiz=>{
+  const steps = quiz.querySelectorAll('.quiz-step');
+  const bars = quiz.querySelectorAll('.quiz-progress i');
+  function go(n){
+    steps.forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
+    bars.forEach((b,i)=>b.classList.toggle('done', i<n));
+  }
+  quiz.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
+    const cur = quiz.querySelector('.quiz-step.active');
+    const need = cur.querySelector('[data-car]');
+    if(need && !need.value.trim()){ need.focus(); need.style.borderColor='#c05a4d'; return; }
+    go(+cur.dataset.step+1);
+  }));
+  quiz.querySelectorAll('[data-prev]').forEach(btn=>btn.addEventListener('click',()=>{
+    go(+quiz.querySelector('.quiz-step.active').dataset.step-1);
+  }));
+});
+
+// ---------- КУДА УХОДЯТ ЗАЯВКИ ----------
+// Основной канал: сообщение в Telegram-группу через бота (Bot API).
+// Настройка (2 минуты):
+//   1) В Telegram откройте @BotFather → /newbot → придумайте имя → получите токен
+//   2) Создайте группу для заявок, добавьте туда бота
+//   3) Напишите в группу любое сообщение, затем откройте в браузере:
+//      https://api.telegram.org/bot<ТОКЕН>/getUpdates
+//      и найдите "chat":{"id":-100...  — это id группы
+//   4) Впишите оба значения ниже (или пришлите мне — впишу сам):
+const TG_BOT_TOKEN = ''; // например '7312345678:AAFh7...'
+const TG_CHAT_ID   = ''; // например '-1001234567890'
+// Пока поля пустые — работает запасной вариант: заявка открывается в WhatsApp салона.
+// Токен будет виден в исходном коде страницы — для бота-«почтаря» это допустимо,
+// но держите группу закрытой; при подозрении на спам перевыпустите токен у @BotFather.
+
+async function sendLead(text){
+  if(!TG_BOT_TOKEN || !TG_CHAT_ID) return false;
+  try{
+    const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:TG_CHAT_ID, text})
+    });
+    return r.ok;
+  }catch(e){ return false; }
+}
+
+// Событие пикселя Meta: fbq('track','Lead') — активируется после установки базового кода пикселя.
+document.querySelectorAll('.form-card').forEach(form=>{
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(typeof fbq==='function'){ fbq('track','Lead',{variant:abVariant}); }
+    const car = form.querySelector('[data-car]').value.trim();
+    const year = form.querySelector('[data-year]').value.trim();
+    const km = form.querySelector('[data-km]').value.trim();
+    const phone = form.querySelector('[data-phone]').value.trim();
+    if(!phone){ form.querySelector('[data-phone]').focus(); return; }
+    const btn = form.querySelector('[type="submit"]');
+    const text = `Заявка на выкуп авто\nАвто: ${car||'—'}, ${year||'—'} г., пробег ${km||'—'} км\nТелефон: ${phone}\n[заголовок: вариант ${abVariant.toUpperCase()}]`;
+    btn.disabled = true;
+    const ok = await sendLead(text);
+    if(ok){
+      const orig = btn.textContent;
+      btn.textContent = 'Заявка отправлена';
+      form.querySelectorAll('input').forEach(i=>i.value='');
+      setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 4000);
+    }else{
+      btn.disabled = false;
+      window.open('https://wa.me/375296782255?text='+encodeURIComponent(text),'_blank');
+    }
+  });
+});
+</script>
+</body>
+</html>
