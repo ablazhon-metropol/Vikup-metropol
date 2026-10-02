@@ -17,3 +17,7 @@
    (для корневого домена без www удобнее всего подключить бесплатный Cloudflare — он умеет CNAME на корне)
 
 Каждый push в ветку `main` автоматически обновляет сайт.
+
+## Live
+
+Сайт: https://web-production-5758c.up.railway.app (скоро: https://vikup-metropol.by)
