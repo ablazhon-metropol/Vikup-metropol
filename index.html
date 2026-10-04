@@ -425,7 +425,7 @@ footer a{color:var(--ink);text-decoration:none}
           <div class="tag">Дороже</div>
           <h3>Комиссия</h3>
           <p>Ставим авто на наши площадки и продаём за вас по рыночной цене. Дольше по сроку — больше по деньгам.</p>
-          <a class="btn btn-ghost" href="#form2">Обсудить условия</a>
+          <a class="btn btn-ghost" href="#form2" data-lead="komissiya">Обсудить условия</a>
         </div>
       </div>
     </div>
@@ -436,8 +436,8 @@ footer a{color:var(--ink);text-decoration:none}
 <section style="padding-top:0" id="form2">
   <div class="wrap">
     <form class="form-card form2 reveal" id="quiz">
-      <h3>Узнайте цену вашего авто</h3>
-      <p>Три шага, 30 секунд — назовём конкретную цифру в течение 15 минут.</p>
+      <h3 id="quizTitle">Узнайте цену вашего авто</h3>
+      <p id="quizSub">Три шага, 30 секунд — назовём конкретную цифру в течение 15 минут.</p>
       <div class="quiz-progress"><i class="done"></i><i></i><i></i></div>
 
       <div class="quiz-step active" data-step="1">
@@ -463,7 +463,7 @@ footer a{color:var(--ink);text-decoration:none}
         <div class="field"><input type="tel" data-phone placeholder="+375 (__) ___-__-__"></div>
         <div class="quiz-nav">
           <button type="button" class="btn btn-ghost btn-back" data-prev>Назад</button>
-          <button class="btn btn-bronze" type="submit">Узнать цену</button>
+          <button class="btn btn-bronze" type="submit" id="quizSubmit">Узнать цену</button>
         </div>
         <div class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
       </div>
@@ -534,7 +534,7 @@ footer a{color:var(--ink);text-decoration:none}
         <p>г. Минск, ул. Мазурова, 1</p>
         <h3 style="margin-top:24px">Телефон</h3>
         <p><a href="tel:+375256682255">+375 25 668-22-55</a> · ежедневно 9:00–21:00</p>
-        <div style="margin-top:24px"><a class="btn btn-bronze" href="#form2">Узнать цену</a></div>
+        <div style="margin-top:24px"><a class="btn btn-bronze" href="#form2" data-lead="komissiya">Узнать условия комиссии</a></div>
       </div>
       <div class="map">
         <iframe loading="lazy" title="Карта: салоны Метрополь Авто в Минске"
@@ -867,6 +867,28 @@ document.querySelectorAll('#quiz').forEach(quiz=>{
   }));
 });
 
+// ---------- КОНТЕКСТ ЗАЯВКИ: выкуп / комиссия ----------
+// Кнопки с data-lead="komissiya" переключают квиз-форму на «условия комиссии»,
+// чтобы человек понимал: он оставляет телефон именно по продаже авто через салон.
+let leadContext = 'vikup';
+const LEAD_TEXTS = {
+  vikup:     {title:'Узнайте цену вашего авто', sub:'Три шага, 30 секунд — назовём конкретную цифру в течение 15 минут.',                 submit:'Узнать цену',       tag:'выкуп'},
+  komissiya: {title:'Узнайте условия комиссии', sub:'Оставьте телефон — расскажем, как продать ваше авто с нашей площадки дороже рынка.', submit:'Получить условия', tag:'комиссия'}
+};
+function setLeadContext(ctx){
+  leadContext = LEAD_TEXTS[ctx] ? ctx : 'vikup';
+  const t = LEAD_TEXTS[leadContext];
+  const qt = document.getElementById('quizTitle');
+  if(qt){
+    qt.textContent = t.title;
+    document.getElementById('quizSub').textContent = t.sub;
+    document.getElementById('quizSubmit').textContent = t.submit;
+  }
+}
+document.querySelectorAll('a[data-lead]').forEach(a=>{
+  a.addEventListener('click',()=>setLeadContext(a.dataset.lead));
+});
+
 // ---------- КУДА УХОДЯТ ЗАЯВКИ ----------
 // Заявки уходят сообщением в Telegram-группу «Выкуп автометрополь» через бота @VikupMetrBot.
 const TG_BOT_TOKEN = '8744860650:AAFOcfkJ1uqRlQhWwe0PAY_dGSxeVE0Iho8';
@@ -898,7 +920,8 @@ document.querySelectorAll('.form-card').forEach(form=>{
     const phone = form.querySelector('[data-phone]').value.trim();
     if(!phone){ form.querySelector('[data-phone]').focus(); return; }
     const btn = form.querySelector('[type="submit"]');
-    const text = `Заявка на выкуп авто\nАвто: ${car||'—'}, ${year||'—'} г., пробег ${km||'—'} км\nТелефон: ${phone}\n[заголовок: вариант ${abVariant.toUpperCase()}]`;
+    const tag = form.id === 'quiz' ? LEAD_TEXTS[leadContext].tag : 'выкуп';
+    const text = `Заявка: ${tag}\nАвто: ${car||'—'}, ${year||'—'} г., пробег ${km||'—'} км\nТелефон: ${phone}\n[заголовок: вариант ${abVariant.toUpperCase()}]`;
     btn.disabled = true;
     const ok = await sendLead(text);
     if(ok){
