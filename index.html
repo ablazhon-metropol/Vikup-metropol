@@ -279,7 +279,7 @@ footer a{color:var(--ink);text-decoration:none}
 .lot-badge{position:absolute;right:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:var(--ink);border:1px solid rgba(179,157,136,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
 
 /* ---------- полноэкранный просмотр фото ---------- */
-.lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,14,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s;overscroll-behavior:contain;touch-action:pan-y}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,14,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s;overscroll-behavior:contain;touch-action:none}
 .lb.open{opacity:1;visibility:visible}
 .lb-img{max-width:94vw;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6);user-select:none}
 .lb-close{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(179,157,136,.4);background:rgba(34,28,26,.85);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;z-index:2;font-family:var(--font-b)}
@@ -735,12 +735,32 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(e.key === 'ArrowLeft') open(idx-1);
     if(e.key === 'ArrowRight') open(idx+1);
   });
-  // свайп влево/вправо на тач-экранах
-  let tx = 0, ty = 0;
-  lb.addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+  // свайпы на тач-экранах: влево/вправо — листать, вниз — закрыть (как в Telegram)
+  let tx = 0, ty = 0, dragY = 0, dragging = false;
+  lb.addEventListener('touchstart', e=>{
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+    dragY = 0; dragging = true;
+    lbImg.style.transition = 'none';
+  }, {passive:true});
+  lb.addEventListener('touchmove', e=>{
+    if(!dragging) return;
+    const dy = e.touches[0].clientY - ty, dx = e.touches[0].clientX - tx;
+    if(dy > 0 && dy > Math.abs(dx)){
+      dragY = dy;
+      lbImg.style.transform = 'translateY(' + dy + 'px)';
+      lb.style.background = 'rgba(20,16,14,' + Math.max(0, 0.97 - dy / 500).toFixed(2) + ')';
+      e.preventDefault(); // не даём браузеру дёргать страницу под пальцем
+    }
+  }, {passive:false});
   lb.addEventListener('touchend', e=>{
+    dragging = false;
     const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-    if(Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) open(idx + (dx < 0 ? 1 : -1));
+    lbImg.style.transition = 'transform .2s ease';
+    lbImg.style.transform = '';
+    lb.style.background = '';
+    if(dragY > 70) close();
+    else if(Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) open(idx + (dx < 0 ? 1 : -1));
+    dragY = 0;
   }, {passive:true});
 })();
 
