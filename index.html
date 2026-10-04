@@ -435,7 +435,7 @@ footer a{color:var(--ink);text-decoration:none}
 <!-- БЛОК 5. Квиз-форма (тёмный) -->
 <section style="padding-top:0" id="form2">
   <div class="wrap">
-    <form class="form-card form2 reveal" id="quiz">
+    <form class="form-card form2 reveal" id="quiz" novalidate>
       <h3 id="quizTitle">Узнайте цену вашего авто</h3>
       <p id="quizSub">Три шага, 30 секунд — назовём конкретную цифру в течение 15 минут.</p>
       <div class="quiz-progress"><i class="done"></i><i></i><i></i></div>
@@ -900,11 +900,16 @@ const TG_CHAT_ID   = '-1003969320111';
 async function sendLead(text){
   if(!TG_BOT_TOKEN || !TG_CHAT_ID) return false;
   try{
+    // form-urlencoded — «простой» запрос без CORS-preflight (у Telegram он нестабилен),
+    // плюс таймаут, чтобы кнопка не зависала при плохой сети.
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>ctrl.abort(), 12000);
     const r = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`,{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:TG_CHAT_ID, text})
+      body:new URLSearchParams({chat_id:TG_CHAT_ID, text}),
+      signal:ctrl.signal
     });
+    clearTimeout(timer);
     return r.ok;
   }catch(e){ return false; }
 }
@@ -923,15 +928,18 @@ document.querySelectorAll('.form-card').forEach(form=>{
     const tag = form.id === 'quiz' ? LEAD_TEXTS[leadContext].tag : 'выкуп';
     const text = `Заявка: ${tag}\nАвто: ${car||'—'}, ${year||'—'} г., пробег ${km||'—'} км\nТелефон: ${phone}\n[заголовок: вариант ${abVariant.toUpperCase()}]`;
     btn.disabled = true;
+    const orig = btn.textContent;
+    btn.textContent = 'Отправляем…';
     const ok = await sendLead(text);
     if(ok){
-      const orig = btn.textContent;
       btn.textContent = 'Заявка отправлена';
       form.querySelectorAll('input').forEach(i=>i.value='');
       setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 4000);
     }else{
+      btn.textContent = orig;
       btn.disabled = false;
-      window.open('https://wa.me/375256682255?text='+encodeURIComponent(text),'_blank');
+      // location.href вместо window.open: Safari блокирует всплывающие окна после await
+      location.href = 'https://wa.me/375256682255?text='+encodeURIComponent(text);
     }
   });
 });
