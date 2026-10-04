@@ -42,7 +42,9 @@
   --font-b:'Inter',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
+/* плавность даём только через JS (якорные кнопки), чтобы браузер
+   не делал плавный «долёт» к #якорю после загрузки страницы */
 body{font-family:var(--font-b);color:var(--ink);background:var(--bg);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--bronze);color:#fff}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
@@ -556,10 +558,20 @@ footer a{color:var(--ink);text-decoration:none}
 // ---------- ВСЕГДА ОТКРЫВАТЬ С САМОГО ВЕРХА ----------
 // Браузеры (особенно Safari) запоминают позицию прокрутки и после обновления
 // страницы возвращают посетителя в середину. Отключаем это поведение.
+const hadHashOnLoad = !!location.hash;
 if('scrollRestoration' in history) history.scrollRestoration = 'manual';
-if(location.hash) history.replaceState(null, '', location.pathname + location.search);
+if(hadHashOnLoad) history.replaceState(null, '', location.pathname + location.search);
 window.scrollTo(0,0);
-window.addEventListener('load', ()=>setTimeout(()=>window.scrollTo(0,0), 0));
+window.addEventListener('load', ()=>{
+  if(hadHashOnLoad){
+    // если зашли по ссылке с #якорем — браузер пытается докрутить к нему
+    // уже после загрузки; в течение первой секунды жёстко держим верх страницы
+    let n = 0;
+    const t = setInterval(()=>{ window.scrollTo(0,0); if(++n >= 6) clearInterval(t); }, 200);
+  }else{
+    setTimeout(()=>window.scrollTo(0,0), 0);
+  }
+});
 window.addEventListener('beforeunload', ()=>window.scrollTo(0,0));
 window.addEventListener('pageshow', e=>{ if(e.persisted) window.scrollTo(0,0); });
 
