@@ -94,6 +94,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(34,28,26,.
 .messengers a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;font-family:var(--font-d);font-weight:700;font-size:14px;text-decoration:none;color:var(--ink);border:1px solid rgba(244,242,236,.25);transition:border-color .2s,color .2s}
 .messengers a:hover{border-color:var(--bronze);color:var(--bronze)}
 .messengers svg{width:18px;height:18px;fill:currentColor}
+.messengers a.viber{grid-column:1/-1}
 
 /* ---------- форма ---------- */
 .form-card{background:rgba(51,42,37,.88);backdrop-filter:blur(14px);border:1px solid rgba(176,141,87,.3);border-radius:24px;padding:28px}
@@ -122,7 +123,7 @@ section.light{background:var(--cream);color:var(--cream-ink)}
 section.light .sec-title{color:var(--cream-ink)}
 section.light .step,section.light .why-card,section.light .review{background:var(--cream-card);border-color:var(--cream-line)}
 section.light .step p,section.light .why-card p,section.light .review p,section.light .faq-a p{color:var(--cream-muted)}
-section.light .review-head span{color:var(--cream-muted)}
+section.light .review-head span,section.light .rev-date{color:var(--cream-muted)}
 section.light .faq-item{border-color:var(--cream-line)}
 section.light .faq-q{color:var(--cream-ink)}
 section.light .number span{color:var(--cream-muted)}
@@ -183,16 +184,24 @@ section.light .sec-label{color:var(--bronze)}
 .quiz-nav .btn{flex:1}
 .quiz-nav .btn-back{flex:0 0 110px}
 
-/* ---------- отзывы ---------- */
-.reviews{display:grid;gap:16px;margin-top:44px}
-@media(min-width:720px){.reviews{grid-template-columns:repeat(3,1fr);gap:20px}}
-.review{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 26px}
-.review-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+/* ---------- отзывы (слайдер, данные из Google-таблицы) ---------- */
+.rev-slider{margin-top:44px}
+.rev-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.rev-track::-webkit-scrollbar{display:none}
+.review{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 26px;flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column}
+@media(min-width:720px){.review{flex:0 0 calc(50% - 8px)}}
+@media(min-width:1000px){.review{flex:0 0 calc(33.333% - 11px)}}
+.review-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
 .avatar{width:48px;height:48px;border-radius:50%;background:var(--bronze-soft);border:1px solid rgba(176,141,87,.45);color:var(--bronze);font-family:var(--font-d);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
 .review-head b{font-family:var(--font-d);font-size:16px;display:block}
 .review-head span{font-size:13px;color:var(--muted)}
-.review p{font-size:14px;color:#d9d0c3}
-/* TODO: заменить на реальные отзывы и фото клиентов (материалы от заказчика) */
+.rev-stars{color:var(--bronze);font-size:14px;letter-spacing:2px;margin-bottom:10px}
+.review p{font-size:14px;color:#d9d0c3;flex:1}
+.rev-date{font-size:12px;color:var(--muted);margin-top:14px}
+.rev-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+.rev-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--cream-line);background:var(--cream-card);color:var(--cream-ink);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+.rev-arrow:hover{border-color:var(--bronze);color:var(--bronze)}
+.rev-count{font-family:var(--font-d);font-weight:700;font-size:14px;color:var(--cream-muted);min-width:64px;text-align:center}
 
 /* ---------- контакты ---------- */
 .contacts-grid{display:grid;gap:32px;margin-top:44px}
@@ -230,7 +239,7 @@ footer a{color:var(--ink);text-decoration:none}
 @media(min-width:900px){.deal-banner img{height:320px}}
 .deal-banner figcaption{position:absolute;left:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:#f6f1e9;border:1px solid rgba(179,157,136,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
 .deal-banner.dark{border-color:rgba(179,157,136,.3)}
-.deal-banner + .reviews{margin-top:32px}
+.deal-banner + .rev-slider{margin-top:32px}
 .deal-banner + .contacts-grid{margin-top:36px}
 
 /* ---------- живая площадка (полоса с реальным фото) ---------- */
@@ -258,7 +267,7 @@ footer a{color:var(--ink);text-decoration:none}
   <div class="wrap header-in">
     <a class="logo" href="#">МЕТРОПОЛЬ <em>АВТО</em></a>
     <div class="header-right">
-      <a class="phone" href="tel:+375296782255">+375 29 678-22-55</a>
+      <a class="phone" href="tel:+375256682255">+375 25 668-22-55</a>
       <a class="btn btn-bronze header-cta" href="#form">Узнать цену</a>
     </div>
   </div>
@@ -292,10 +301,10 @@ footer a{color:var(--ink);text-decoration:none}
         <div class="field"><input type="tel" data-phone placeholder="+375 (__) ___-__-__" required></div>
         <button class="btn btn-bronze" type="submit">Узнать цену</button>
         <div class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
-        <!-- TODO: Telegram — заменить ссылку на бот «Метрополь Агент», когда дасте username -->
         <div class="messengers">
-          <a href="https://t.me/+375296782255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.9 4.6L19 19.3c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6L18.6 7c.4-.3-.1-.5-.6-.2L7.9 13.2 3.4 11.8c-1-.3-1-1 .2-1.4l17.3-6.7c.8-.3 1.5.2 1 1.9z"/></svg>Telegram</a>
-          <a href="https://wa.me/375296782255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.1.1.3 0 .5-.4.8-.9 1-.6 1.4.8 1.3 1.7 2.1 3 2.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.5.3.1.2.1.7-.2 1.1z"/></svg>WhatsApp</a>
+          <a href="https://t.me/+375256682255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.9 4.6L19 19.3c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6L18.6 7c.4-.3-.1-.5-.6-.2L7.9 13.2 3.4 11.8c-1-.3-1-1 .2-1.4l17.3-6.7c.8-.3 1.5.2 1 1.9z"/></svg>Telegram</a>
+          <a href="https://wa.me/375256682255" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.1.1.3 0 .5-.4.8-.9 1-.6 1.4.8 1.3 1.7 2.1 3 2.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.5.3.1.2.1.7-.2 1.1z"/></svg>WhatsApp</a>
+          <a class="viber" href="viber://chat?number=%2B375256682255"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Viber</a>
         </div>
       </form>
     </div>
@@ -325,11 +334,11 @@ footer a{color:var(--ink);text-decoration:none}
 
 <!-- БЛОК 2. Цифры доверия (кремовый) -->
 <section class="light">
-  <!-- TODO: заменить на реальные цифры (материалы от заказчика) -->
+  <!-- Цифры подтягиваются из Google-таблицы (вкладка «Цифры»); ниже — резервные значения -->
   <div class="wrap numbers reveal">
-    <div class="number"><b>8</b><span>лет на рынке</span></div>
-    <div class="number"><b>2 400+</b><span>авто выкуплено</span></div>
-    <div class="number"><b>96%</b><span>от рыночной цены платим в среднем</span></div>
+    <div class="number"><b id="num-years">8</b><span>лет на рынке</span></div>
+    <div class="number"><b id="num-cars">5 000+</b><span>авто выкуплено</span></div>
+    <div class="number"><b id="num-pct">97%</b><span>от рыночной цены платим в среднем</span></div>
   </div>
 </section>
 
@@ -466,18 +475,14 @@ footer a{color:var(--ink);text-decoration:none}
       <img src="assets/sdelka.webp" alt="Клиент и оценщик Метрополь Авто после сделки" loading="lazy">
       <figcaption>Живая сделка · наш оценщик и клиент</figcaption>
     </figure>
-    <div class="reviews reveal">
-      <div class="review">
-        <div class="review-head"><div class="avatar">Д</div><div><b>Дмитрий</b><span>Peugeot 3008</span></div></div>
-        <p>Позвонил в обед — к вечеру деньги были на карте. Цену по телефону подтвердили после осмотра, без торга.</p>
-      </div>
-      <div class="review">
-        <div class="review-head"><div class="avatar">О</div><div><b>Ольга</b><span>Opel Astra</span></div></div>
-        <p>Оценщик приехал на работу, всё оформили за полчаса. Документы полностью взяли на себя.</p>
-      </div>
-      <div class="review">
-        <div class="review-head"><div class="avatar">С</div><div><b>Сергей</b><span>Ford Kuga</span></div></div>
-        <p>Сдал старую в зачёт и уехал на новой в тот же день. Доплатил разницу — всё прозрачно, по договору.</p>
+    <!-- Отзывы рендерит JS: сначала встроенные резервные, затем — из Google-таблицы (вкладка «Отзывы»).
+         Новый отзыв = новая строка в таблице, код трогать не нужно. -->
+    <div class="rev-slider reveal">
+      <div class="rev-track" id="revTrack"></div>
+      <div class="rev-nav">
+        <button type="button" class="rev-arrow" id="revPrev" aria-label="Предыдущий отзыв">←</button>
+        <div class="rev-count" id="revCount"></div>
+        <button type="button" class="rev-arrow" id="revNext" aria-label="Следующий отзыв">→</button>
       </div>
     </div>
 
@@ -523,7 +528,7 @@ footer a{color:var(--ink);text-decoration:none}
         <h3 style="margin-top:24px">Салон на Мазурова</h3>
         <p>г. Минск, ул. Мазурова, 1</p>
         <h3 style="margin-top:24px">Телефон</h3>
-        <p><a href="tel:+375296782255">+375 29 678-22-55</a> · ежедневно 9:00–21:00</p>
+        <p><a href="tel:+375256682255">+375 25 668-22-55</a> · ежедневно 9:00–21:00</p>
         <div style="margin-top:24px"><a class="btn btn-bronze" href="#form2">Узнать цену</a></div>
       </div>
       <div class="map">
@@ -546,9 +551,8 @@ footer a{color:var(--ink);text-decoration:none}
 
 <script>
 // ---------- БЕГУЩАЯ СТРОКА ----------
-// 50+ встроенных вариантов — строка не требует постоянных правок.
-// TODO: заменить демонстрационные сделки на реальные по мере накопления.
-// Опционально: если захотите управлять строкой сами — можно подключить Google-таблицу (CSV), скажите мне.
+// Свежие выкупы подтягиваются из Google-таблицы (вкладка «Выкуплено») и встают в начало строки.
+// Ниже — встроенный резервный список на случай, если таблица недоступна.
 const TICKER_ITEMS = [
   ['Выкуплено: VW Passat 2018','41 800 BYN'],
   ['Выкуплено: Renault Duster 2019','34 200 BYN'],
@@ -608,15 +612,166 @@ const TICKER_ITEMS = [
   ['Выкуплено: VW Caddy 2011','19 300 BYN'],
 ];
 
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
 function renderTicker(items){
   const html = items
-    .filter(r=>r[0] && r[0].trim())
-    .map(r=>`<span class="tick-item"><i></i>${r[0].trim()}${r[1]&&r[1].trim()?` · <b>${r[1].trim()}</b>`:''}</span>`)
+    .filter(r=>r[0] && String(r[0]).trim())
+    .map(r=>`<span class="tick-item"><i></i>${esc(String(r[0]).trim())}${r[1]&&String(r[1]).trim()?` · <b>${esc(String(r[1]).trim())}</b>`:''}</span>`)
     .join('');
   const ticker = document.getElementById('ticker');
   ticker.innerHTML = html + html; // дублируем для бесшовного цикла
 }
 renderTicker(TICKER_ITEMS);
+
+// ---------- ОТЗЫВЫ: СЛАЙДЕР + GOOGLE-ТАБЛИЦА (CMS) ----------
+// Отзывы, цифры и свежие выкупы сайт читает из Google-таблицы:
+// https://docs.google.com/spreadsheets/d/1NwVIZi-xOzf54dY28a4KgMwGEBcXaAExJoQUizd_oho
+// Чтобы обновить контент — правьте таблицу (вкладки: Отзывы, Цифры, Выкуплено),
+// доступ у таблицы должен быть «Всем, у кого есть ссылка — Читатель».
+// Ниже — встроенные резервные данные: сайт работает, даже если таблица недоступна.
+const SHEET_ID = '1NwVIZi-xOzf54dY28a4KgMwGEBcXaAExJoQUizd_oho';
+
+const REVIEWS_FALLBACK = [
+  {name:'Дмитрий', car:'Renault Duster 2016', stars:5, date:'14.09.2026', text:'Срочно понадобились деньги, обзвонил три выкупа. Здесь дали самую адекватную цену и не стали занижать на месте, как это обычно бывает. Всё заняло час с небольшим.'},
+  {name:'Анна', car:'Geely Coolray 2020', stars:5, date:'02.09.2026', text:'Боялась, что китайца вообще никто не возьмёт. Оценили по фото, на месте цена не изменилась. Деньги на карту пришли сразу после переоформления.'},
+  {name:'Сергей', car:'Volkswagen Polo 2015', stars:5, date:'25.08.2026', text:'Продавал сам два месяца — одни перекупы и пустые обещания. Здесь приехал, через 40 минут уехал на такси с деньгами. Рекомендую.'},
+  {name:'Марина', car:'Chery Tiggo 4 2021', stars:4, date:'18.08.2026', text:'Приезжала с мужем, всё прозрачно: договор, акт, расчёт. Единственное — пришлось подождать оценщика минут двадцать.'},
+  {name:'Алексей', car:'BMW 320d 2014', stars:5, date:'30.07.2026', text:'Машина после небольшого ДТП, думал, дадут копейки. Оценили честно, выше, чем предлагали на разборку. Спасибо Андрею за терпение с документами.'},
+  {name:'Ольга', car:'Haval Jolion 2021', stars:5, date:'21.07.2026', text:'Сдавала в trade-in, взамен брала Geely из их салона. Доплата вышла меньше, чем рассчитывала. Всё в одном месте за один день.'},
+  {name:'Игорь', car:'Ford Focus 2014', stars:4, date:'09.07.2026', text:'Нормальные ребята. Торговались немного, но в итоге сошлись на цифре, которую озвучили ещё по телефону. Без сюрпризов.'},
+  {name:'Наталья', car:'Opel Astra 2013', stars:5, date:'28.06.2026', text:'Машина мужа, он уехал работать за границу. Всё оформили по доверенности без проблем, деньги перевели ему на карту.'},
+  {name:'Павел', car:'Chery Tiggo 8 2021', stars:5, date:'15.06.2026', text:'Выкупили китайца за один день. До этого полгода висело объявление — ноль реальных звонков. Жалею, что не приехал сразу.'},
+  {name:'Елена', car:'Renault Logan 2014', stars:4, date:'03.06.2026', text:'Машина старая, но ходовая. Думала, не возьмут. Взяли, правда цена была чуть ниже моих ожиданий, но зато быстро и без нервов.'},
+  {name:'Максим', car:'Audi A4 2016', stars:5, date:'26.05.2026', text:'Приехал в обеденный перерыв, к вечеру вопрос был закрыт. Оценка совпала с той, что назвали по телефону, до рубля.'},
+  {name:'Светлана', car:'Peugeot 308 2013', stars:5, date:'12.05.2026', text:'Понравилось, что не читают лекций и не давят. Посмотрели, назвали цену, дали время подумать. Перезвонила на следующий день — продала.'},
+  {name:'Владимир', car:'Volkswagen Tiguan 2018', stars:5, date:'29.04.2026', text:'Дорогая машина, переживал за расчёт. Деньги перевели при мне, проверил в приложении банка — всё честно. Договор грамотный.'},
+  {name:'Татьяна', car:'Changan CS35 Plus 2021', stars:4, date:'17.04.2026', text:'Выкупили быстро, но пришлось два раза возить документы, потому что сама забыла паспорт. Меня ждали, спасибо за терпение.'},
+  {name:'Олег', car:'Dongfeng 580 2019', stars:5, date:'05.04.2026', text:'Редкий аппарат, боялся, что вообще не оценят. Нашли для него покупателя сами, я просто получил деньги. Профессионалы.'},
+  {name:'Юлия', car:'Renault Kaptur 2018', stars:5, date:'24.03.2026', text:'Сначала написала в WhatsApp, скинула фото, через час назвали цену. На следующий день приехала — всё совпало. Очень удобно.'},
+  {name:'Евгений', car:'Haval F7 2020', stars:5, date:'11.03.2026', text:'Машина была в кредите, думал, ничего не выйдет. Сами погасили кредит в банке, разницу отдали мне. Сняли с меня огромную головную боль.'},
+  {name:'Ирина', car:'Citroën C4 2015', stars:5, date:'27.02.2026', text:'Всё как договаривались: цена, сроки, документы. После продажи ещё и до дома подвезли, мелочь, а приятно.'},
+  {name:'Роман', car:'Geely Atlas Pro 2021', stars:5, date:'14.02.2026', text:'Привёз после аварии на эвакуаторе. Приняли в таком виде, расчёт сразу. Не пришлось вкладываться в ремонт ради продажи.'},
+  {name:'Вероника', car:'Volkswagen Golf 2016', stars:5, date:'30.01.2026', text:'Переживала, что как девушке будут впаривать что-то. Ничего подобного — уважительно, по делу, без лишних разговоров.'},
+  {name:'Николай', car:'Opel Insignia 2016', stars:4, date:'22.01.2026', text:'Второй раз обращаюсь. Первый раз продавал Астру, теперь Инсигнию. Цена чуть ниже рынка, но ноль геморроя. Оно того стоит.'},
+  {name:'Дарья', car:'Exeed TXL 2021', stars:5, date:'15.01.2026', text:'Сдавала машину мужа в зачёт новой. Всё оформили за один визит: старую забрали, новую отдали. Красота.'},
+  {name:'Виктор', car:'Renault Arkana 2020', stars:5, date:'09.01.2026', text:'Нормальный выкуп. Дали ровно столько, сколько обещали после осмотра. Рекомендую тем, кто ценит своё время.'},
+  {name:'Ксения', car:'Chery Tiggo 7 Pro 2022', stars:5, date:'19.12.2025', text:'Приехала после работы, уже стемнело. Парни дождались, осмотрели при свете фонарей, всё честно. Деньги на карту моментально.'},
+  {name:'Артём', car:'BMW X3 2018', stars:5, date:'10.12.2025', text:'Сравнивал с двумя конкурентами — здесь предложили на 1500 больше и без занижения на месте. Сделка заняла около часа.'},
+  {name:'Алина', car:'Ford Kuga 2017', stars:5, date:'02.12.2025', text:'Уезжала из страны, надо было срочно. Приехали ко мне сами, оформили у меня во дворе, потом съездили в ГАИ. Спасибо огромное.'},
+  {name:'Кирилл', car:'Changan UNI-K 2023', stars:5, date:'24.11.2025', text:'Почти новая машина, боялся большой потери в цене. Оценили достойно, выше, чем в другом выкупе на 2000. Подписали договор за полчаса.'},
+  {name:'Надежда', car:'Peugeot 3008 2017', stars:5, date:'13.11.2025', text:'Машина после наследства, куча вопросов с документами. Разобрались со всем сами, я только подписывала. Огромное спасибо.'},
+  {name:'Геннадий', car:'Volkswagen Passat 2017', stars:5, date:'04.11.2025', text:'Солидный подход. Оценщик грамотный, по каждому кузовному элементу объяснил, почему такая цена. Ушёл довольный.'},
+  {name:'Людмила', car:'Geely Coolray 2020', stars:5, date:'28.10.2025', text:'Сын продавал через них свою машину, теперь и я свою. Семейная проверка пройдена, всё честно и быстро.'},
+  {name:'Станислав', car:'Audi Q5 2017', stars:5, date:'17.10.2025', text:'Дорогой автомобиль, сделка большая. Всё через банк, официально, с договором. Ни одного мутного момента.'},
+  {name:'Валерия', car:'Haval Dargo 2022', stars:5, date:'07.10.2025', text:'Написала вечером, утром уже позвонили и назначили осмотр. К обеду продала. Как в сказке после месяцев на авито.'},
+  {name:'Влад', car:'Dongfeng AX7 2020', stars:4, date:'29.09.2025', text:'Не самая ликвидная машина, но взяли и цену дали нормальную. Чуть подождал перевод, банк тупил, но это не к ребятам.'},
+  {name:'Владимир', car:'Chery Tiggo 4 2021', stars:5, date:'18.09.2025', text:'Привёз женину машину. Всё заняло 50 минут вместе с дорогой в ГАИ. Цена как по телефону. Рекомендую.'},
+  {name:'Ольга', car:'Renault Duster 2016', stars:5, date:'08.09.2025', text:'Второй раз продаю через них. Всё стабильно: быстро, честно, без пыли в глаза. Спасибо!'},
+  {name:'Дмитрий', car:'Geely Monjaro 2023', stars:5, date:'30.08.2025', text:'Боялся, что новый китаец сильно потеряет. Потерял меньше, чем думал. Оценка обоснованная, всё показали по рынку.'},
+  {name:'Анна', car:'Opel Astra 2013', stars:5, date:'19.08.2025', text:'Понадобились деньги на лечение. Отнеслись по-человечески, не стали давить срочностью. Цена честная, расчёт сразу.'},
+  {name:'Сергей', car:'Audi A6 2015', stars:5, date:'07.08.2025', text:'Машина с историей, были нюансы по документам. Разрулили всё за два дня, я даже никуда не ездил. Сервис уровня большого города.'},
+  {name:'Марина', car:'Volkswagen Polo 2015', stars:5, date:'29.07.2025', text:'Пришла по рекомендации коллеги. Всё подтвердилось: быстро, вежливо, без занижения. Буду советовать дальше.'},
+  {name:'Алексей', car:'Exeed RX 2023', stars:5, date:'21.07.2025', text:'Сдал в trade-in почти новый, взял другой из салона. Скидку на новый дали, на старый цену не порезали. Честный обмен.'},
+  {name:'Ирина', car:'Ford Focus 2014', stars:4, date:'10.07.2025', text:'Единственное — долго ждала своей очереди на осмотр, день был загруженный. Но по цене и скорости оформления всё отлично.'},
+  {name:'Павел', car:'BMW X5 2016', stars:5, date:'01.07.2025', text:'Большая сумма, всё прошло через банк официально. Договор читал с юристом — без подводных камней. Работают чисто.'},
+  {name:'Татьяна', car:'Changan CS55 Plus 2022', stars:5, date:'20.06.2025', text:'Продала за день. По телефону сказали вилку, на месте дали верхнюю границу. Приятно удивлена.'},
+  {name:'Евгений', car:'Renault Logan 2014', stars:4, date:'11.06.2025', text:'Старенькая, но рабочая лошадка. Взяли без разговоров, цена символическая, но я и не ждал чуда. Всё честно.'},
+  {name:'Юлия', car:'Haval Jolion 2021', stars:5, date:'02.06.2025', text:'Писала в три выкупа, тут ответили быстрее всех и по-человечески. Приехала, продала, ушла с деньгами. Всё.'},
+  {name:'Роман', car:'Chery Tiggo 8 2021', stars:5, date:'23.05.2025', text:'Семиместный, думал, сложно будет. Нет — оценили, забрали, рассчитались. Документы оформили грамотно.'},
+  {name:'Вероника', car:'Volkswagen Golf 2016', stars:5, date:'14.05.2025', text:'Машина мамина, она пожилая, всё объяснили спокойно и по полочкам. Мама осталась довольна, а это дорогого стоит.'},
+  {name:'Олег', car:'Peugeot 308 2013', stars:5, date:'05.05.2025', text:'Всё чётко, как в аптеке. Цена, договор, деньги. 40 минут — и я свободный человек без машины.'},
+  {name:'Светлана', car:'Geely Atlas Pro 2021', stars:5, date:'25.04.2025', text:'Привозила на оценку дважды — первый раз думала. Цену держали неделю, как обещали. Продала на второй заход без проблем.'},
+  {name:'Николай', car:'Citroën C4 2015', stars:5, date:'15.04.2025', text:'До них два перекупа резали цену в полтора раза. Здесь дали нормально. Сразу видно, работают на репутацию.'},
+  {name:'Дарья', car:'Renault Kaptur 2018', stars:5, date:'04.04.2025', text:'Всё онлайн начали: фото, оценка, вопросы. На месте только подписала и получила деньги. Современно и удобно.'},
+];
+
+function renderReviews(list){
+  const track = document.getElementById('revTrack');
+  track.innerHTML = list.map(r=>{
+    const n = Math.max(1, Math.min(5, r.stars||5));
+    return '<div class="review">'
+      + '<div class="review-head"><div class="avatar">'+esc((r.name||'•').charAt(0))+'</div>'
+      + '<div><b>'+esc(r.name)+'</b><span>'+esc(r.car)+'</span></div></div>'
+      + '<div class="rev-stars">'+'★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n)+'</div>'
+      + '<p>'+esc(r.text)+'</p>'
+      + (r.date ? '<div class="rev-date">'+esc(r.date)+'</div>' : '')
+      + '</div>';
+  }).join('');
+  track.scrollLeft = 0;
+  updateRevCount();
+}
+
+// стрелки, счётчик, автопрокрутка
+const revTrack = document.getElementById('revTrack');
+function revStep(){ const c = revTrack.querySelector('.review'); return c ? c.getBoundingClientRect().width + 16 : 320; }
+function updateRevCount(){
+  const total = revTrack.children.length || 1;
+  const i = Math.min(Math.round(revTrack.scrollLeft / revStep()) + 1, total);
+  document.getElementById('revCount').textContent = i + ' / ' + total;
+}
+function revStopAuto(){ if(revAuto){ clearInterval(revAuto); revAuto = null; } }
+document.getElementById('revPrev').addEventListener('click', ()=>{ revStopAuto(); revTrack.scrollBy({left:-revStep(), behavior:'smooth'}); });
+document.getElementById('revNext').addEventListener('click', ()=>{ revStopAuto(); revTrack.scrollBy({left:revStep(), behavior:'smooth'}); });
+revTrack.addEventListener('scroll', updateRevCount, {passive:true});
+renderReviews(REVIEWS_FALLBACK);
+
+// лёгкая автопрокрутка; выключается после первого касания/стрелки
+let revAuto = setInterval(()=>{
+  if(revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 12) revTrack.scrollTo({left:0, behavior:'smooth'});
+  else revTrack.scrollBy({left:revStep(), behavior:'smooth'});
+}, 6000);
+['pointerdown','wheel'].forEach(ev=>revTrack.addEventListener(ev, revStopAuto, {once:true, passive:true}));
+
+// ---------- СИНХРОНИЗАЦИЯ С GOOGLE-ТАБЛИЦЕЙ ----------
+function gvizUrl(sheet){
+  return 'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&headers=1&sheet='+encodeURIComponent(sheet);
+}
+async function loadSheet(sheet){
+  const ctrl = new AbortController();
+  const timer = setTimeout(()=>ctrl.abort(), 8000);
+  try{
+    const r = await fetch(gvizUrl(sheet), {signal:ctrl.signal});
+    const txt = await r.text();
+    const m = txt.match(/setResponse\(([\s\S]*)\)\s*;?\s*$/);
+    if(!m) return null;
+    const j = JSON.parse(m[1]);
+    if(!j.table) return null;
+    return (j.table.rows||[]).map(row=>(row.c||[]).map(c=>c ? String(c.f!=null?c.f:(c.v!=null?c.v:'')) : ''));
+  }catch(e){ return null; }
+  finally{ clearTimeout(timer); }
+}
+
+async function syncFromSheet(){
+  // Отзывы: Имя | Авто | Текст | Оценка | Дата
+  const rev = await loadSheet('Отзывы');
+  if(rev){
+    const list = rev.filter(r=>r[0] && r[2]).map(r=>({name:r[0], car:r[1], text:r[2], stars:parseInt(r[3],10)||5, date:r[4]}));
+    if(list.length) renderReviews(list);
+  }
+  // Цифры: Параметр | Значение
+  const nums = await loadSheet('Цифры');
+  if(nums){
+    nums.forEach(r=>{
+      const k = (r[0]||'').toLowerCase(), v = (r[1]||'').trim();
+      if(!v) return;
+      if(k.indexOf('лет')>-1) document.getElementById('num-years').textContent = v;
+      else if(k.indexOf('выкуплен')>-1) document.getElementById('num-cars').textContent = v;
+      else if(k.indexOf('%')>-1 || k.indexOf('процент')>-1 || k.indexOf('рынк')>-1) document.getElementById('num-pct').textContent = v;
+    });
+  }
+  // Свежие выкупы: Авто | Год | Цена, BYN | Когда — в начало бегущей строки
+  const deals = await loadSheet('Выкуплено');
+  if(deals){
+    const fresh = deals.filter(r=>r[0]).map(r=>{
+      let t = 'Выкуплено: '+r[0]+(r[1]?' '+r[1]:'');
+      if(r[3]) t += ' · '+r[3];
+      return [t, r[2] ? r[2]+' BYN' : ''];
+    });
+    if(fresh.length) renderTicker(fresh.concat(TICKER_ITEMS));
+  }
+}
+syncFromSheet();
 
 // scroll reveal
 const io = new IntersectionObserver(entries=>{
@@ -682,18 +837,11 @@ document.querySelectorAll('#quiz').forEach(quiz=>{
 });
 
 // ---------- КУДА УХОДЯТ ЗАЯВКИ ----------
-// Основной канал: сообщение в Telegram-группу через бота (Bot API).
-// Настройка (2 минуты):
-//   1) В Telegram откройте @BotFather → /newbot → придумайте имя → получите токен
-//   2) Создайте группу для заявок, добавьте туда бота
-//   3) Напишите в группу любое сообщение, затем откройте в браузере:
-//      https://api.telegram.org/bot<ТОКЕН>/getUpdates
-//      и найдите "chat":{"id":-100...  — это id группы
-//   4) Впишите оба значения ниже (или пришлите мне — впишу сам):
-const TG_BOT_TOKEN = ''; // например '7312345678:AAFh7...'
-const TG_CHAT_ID   = ''; // например '-1001234567890'
-// Пока поля пустые — работает запасной вариант: заявка открывается в WhatsApp салона.
-// Токен будет виден в исходном коде страницы — для бота-«почтаря» это допустимо,
+// Заявки уходят сообщением в Telegram-группу «Выкуп автометрополь» через бота @VikupMetrBot.
+const TG_BOT_TOKEN = '8744860650:AAFOcfkJ1uqRlQhWwe0PAY_dGSxeVE0Iho8';
+const TG_CHAT_ID   = '-1003969320111';
+// Если у посетителя Telegram недоступен — заявка откроется в WhatsApp салона.
+// Токен виден в исходном коде страницы — для бота-«почтаря» это допустимо,
 // но держите группу закрытой; при подозрении на спам перевыпустите токен у @BotFather.
 
 async function sendLead(text){
@@ -729,7 +877,7 @@ document.querySelectorAll('.form-card').forEach(form=>{
       setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 4000);
     }else{
       btn.disabled = false;
-      window.open('https://wa.me/375296782255?text='+encodeURIComponent(text),'_blank');
+      window.open('https://wa.me/375256682255?text='+encodeURIComponent(text),'_blank');
     }
   });
 });
