@@ -186,7 +186,7 @@ section.light .sec-label{color:var(--bronze)}
 
 /* ---------- отзывы (слайдер, данные из Google-таблицы) ---------- */
 .rev-slider{margin-top:44px}
-.rev-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.rev-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:6px}
 .rev-track::-webkit-scrollbar{display:none}
 .review{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px 26px;flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column}
 @media(min-width:720px){.review{flex:0 0 calc(50% - 8px)}}
@@ -232,6 +232,9 @@ footer a{color:var(--ink);text-decoration:none}
 .sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none}
 .sticky-cta .btn{width:100%;box-shadow:0 12px 32px rgba(0,0,0,.4)}
 @media(max-width:719px){.sticky-cta{display:block}}
+
+/* якорные цели не прячутся под фиксированную шапку */
+#form,#form2{scroll-margin-top:90px}
 
 /* ---------- баннер с реальным фото (отзывы, контакты) ---------- */
 .deal-banner{margin:32px 0 0;border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--cream-line)}
@@ -560,6 +563,20 @@ window.addEventListener('load', ()=>setTimeout(()=>window.scrollTo(0,0), 0));
 window.addEventListener('beforeunload', ()=>window.scrollTo(0,0));
 window.addEventListener('pageshow', e=>{ if(e.persisted) window.scrollTo(0,0); });
 
+// ---------- якорные ссылки: плавный скролл с учётом фиксированной шапки ----------
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id.length < 2) return;
+    const t = document.querySelector(id);
+    if(!t) return;
+    e.preventDefault();
+    const y = Math.max(t.getBoundingClientRect().top + window.scrollY - 90, 0);
+    window.scrollTo({top:y, behavior:'smooth'});
+    if(history.replaceState) history.replaceState(null,'',location.pathname + location.search);
+  });
+});
+
 // ---------- БЕГУЩАЯ СТРОКА ----------
 // Свежие выкупы подтягиваются из Google-таблицы (вкладка «Выкуплено») и встают в начало строки.
 // Ниже — встроенный резервный список на случай, если таблица недоступна.
@@ -720,18 +737,10 @@ function updateRevCount(){
   const i = Math.min(Math.round(revTrack.scrollLeft / revStep()) + 1, total);
   document.getElementById('revCount').textContent = i + ' / ' + total;
 }
-function revStopAuto(){ if(revAuto){ clearInterval(revAuto); revAuto = null; } }
-document.getElementById('revPrev').addEventListener('click', ()=>{ revStopAuto(); revTrack.scrollBy({left:-revStep(), behavior:'smooth'}); });
-document.getElementById('revNext').addEventListener('click', ()=>{ revStopAuto(); revTrack.scrollBy({left:revStep(), behavior:'smooth'}); });
+document.getElementById('revPrev').addEventListener('click', ()=>revTrack.scrollBy({left:-revStep(), behavior:'smooth'}));
+document.getElementById('revNext').addEventListener('click', ()=>revTrack.scrollBy({left:revStep(), behavior:'smooth'}));
 revTrack.addEventListener('scroll', updateRevCount, {passive:true});
 renderReviews(REVIEWS_FALLBACK);
-
-// лёгкая автопрокрутка; выключается после первого касания/стрелки
-let revAuto = setInterval(()=>{
-  if(revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 12) revTrack.scrollTo({left:0, behavior:'smooth'});
-  else revTrack.scrollBy({left:revStep(), behavior:'smooth'});
-}, 6000);
-['pointerdown','wheel'].forEach(ev=>revTrack.addEventListener(ev, revStopAuto, {once:true, passive:true}));
 
 // ---------- СИНХРОНИЗАЦИЯ С GOOGLE-ТАБЛИЦЕЙ ----------
 function gvizUrl(sheet){
