@@ -260,6 +260,27 @@ footer a{color:var(--ink);text-decoration:none}
 .lot-text h2{font-size:clamp(24px,5.5vw,34px);margin-bottom:12px}
 .lot-text p{font-size:15px;color:var(--muted);margin-bottom:22px}
 
+/* ---------- фотогалерея ---------- */
+.gal-sub{color:var(--muted);font-size:15px;max-width:520px;margin-top:14px}
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:32px}
+@media(min-width:720px){.gal-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media(min-width:1000px){.gal-grid{grid-template-columns:repeat(4,1fr)}}
+.gal-item{padding:0;border:1px solid rgba(179,157,136,.25);border-radius:16px;overflow:hidden;background:var(--panel);cursor:zoom-in;aspect-ratio:3/4;transition:border-color .25s ease}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gal-item:hover{border-color:var(--bronze)}
+.gal-item:hover img{transform:scale(1.04)}
+.gal-item:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+
+/* ---------- полноэкранный просмотр фото ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,14,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s;overscroll-behavior:contain;touch-action:pan-y}
+.lb.open{opacity:1;visibility:visible}
+.lb-img{max-width:94vw;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6);user-select:none}
+.lb-close{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(179,157,136,.4);background:rgba(34,28,26,.85);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;z-index:2;font-family:var(--font-b)}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(179,157,136,.4);background:rgba(34,28,26,.85);color:var(--ink);font-size:28px;line-height:1;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.lb-prev{left:10px}.lb-next{right:10px}
+@media(max-width:719px){.lb-arrow{display:none}/* на телефоне листаем свайпом */}
+.lb-count{position:absolute;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:var(--champagne);font-family:var(--font-d);font-weight:700;font-size:14px;background:rgba(34,28,26,.85);border:1px solid rgba(179,157,136,.3);border-radius:999px;padding:6px 16px;white-space:nowrap}
+
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
@@ -332,7 +353,7 @@ footer a{color:var(--ink);text-decoration:none}
       <div class="sec-label">Живая площадка</div>
       <h2>Это не сток — это мы</h2>
       <p>Реальный кадр с нашей площадки: каждый день выкупаем, продаём и принимаем авто в зачёт. То, что видите на фото, — машины, которые уже у нас.</p>
-      <a class="btn btn-ghost" href="https://metropol-auto.by/vehicles/" target="_blank" rel="noopener">Смотреть авто в наличии</a>
+      <a class="btn btn-ghost" href="https://metropol-auto.by/vehicles/">Смотреть авто в наличии</a>
     </div>
   </div>
 </div>
@@ -416,7 +437,7 @@ footer a{color:var(--ink);text-decoration:none}
           <div class="tag">Выгодно</div>
           <h3>Trade-in</h3>
           <p>Зачтём ваше авто по максимальной оценке — уезжаете на машине из нашего салона в тот же день.</p>
-          <a class="btn btn-bronze" href="https://metropol-auto.by/vehicles/" target="_blank" rel="noopener">Выбрать авто взамен</a>
+          <a class="btn btn-bronze" href="https://metropol-auto.by/vehicles/">Выбрать авто взамен</a>
         </div>
       </div>
       <div class="scen">
@@ -517,6 +538,29 @@ footer a{color:var(--ink);text-decoration:none}
   </div>
 </section>
 
+<!-- БЛОК 6.5. Фотогалерея (тёмный) -->
+<section class="glow" id="gallery">
+  <div class="wrap">
+    <div class="sec-label reveal">Живые сделки</div>
+    <h2 class="sec-title reveal">Наши клиенты и их автомобили</h2>
+    <p class="gal-sub reveal">Реальные кадры с площадки — люди, которые нам доверились. Нажмите на фото, чтобы рассмотреть: листать можно свайпом.</p>
+    <div class="gal-grid reveal">
+      <button type="button" class="gal-item"><img src="img/gallery/01s.webp" data-full="img/gallery/01.webp" alt="Клиент Метрополь Авто у автомобиля с красным бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/02s.webp" data-full="img/gallery/02.webp" alt="Клиентка Метрополь Авто у нового Changan с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/03s.webp" data-full="img/gallery/03.webp" alt="Клиентка Метрополь Авто у серого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/04s.webp" data-full="img/gallery/04.webp" alt="Клиенты Метрополь Авто у Geely с бантом в день выдачи" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/05s.webp" data-full="img/gallery/05.webp" alt="Клиенты Метрополь Авто — выдача белого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/06s.webp" data-full="img/gallery/06.webp" alt="Клиенты Метрополь Авто у белого Geely с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/07s.webp" data-full="img/gallery/07.webp" alt="Клиентка Метрополь Авто у Peugeot с красным бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/08s.webp" data-full="img/gallery/08.webp" alt="Клиенты Метрополь Авто у белого Chevrolet" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/09s.webp" data-full="img/gallery/09.webp" alt="Семья клиентов Метрополь Авто у Peugeot с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/10s.webp" data-full="img/gallery/10.webp" alt="Клиентка с дочкой у Geely — выдача в Метрополь Авто" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/11s.webp" data-full="img/gallery/11.webp" alt="Площадка Метрополь Авто на закате — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item"><img src="img/gallery/12s.webp" data-full="img/gallery/12.webp" alt="Площадка Метрополь Авто вечером — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
+    </div>
+  </div>
+</section>
+
 <!-- БЛОК 7. Контакты (тёмный) -->
 <section class="glow">
   <div class="wrap">
@@ -551,6 +595,15 @@ footer a{color:var(--ink);text-decoration:none}
   </div>
 </footer>
 
+<!-- Полноэкранный просмотр фото из галереи -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button type="button" class="lb-arrow lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
+  <img class="lb-img" id="lbImg" alt="">
+  <button type="button" class="lb-arrow lb-next" id="lbNext" aria-label="Следующее фото">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
 <!-- Липкая кнопка на мобильном -->
 <div class="sticky-cta"><a class="btn btn-bronze" href="#form">Узнать цену авто</a></div>
 
@@ -559,11 +612,22 @@ footer a{color:var(--ink);text-decoration:none}
 // Браузеры (особенно Safari) запоминают позицию прокрутки и после обновления
 // страницы возвращают посетителя в середину. Отключаем это поведение.
 const hadHashOnLoad = !!location.hash;
+// Возврат с каталога metropol-auto.by: позиция сохраняется при уходе
+// и восстанавливается при возврате «назад» — человек попадает на то же место.
+let backToY = null;
+try{
+  const sv = sessionStorage.getItem('metrBackY');
+  if(sv !== null){ backToY = parseInt(sv, 10) || 0; sessionStorage.removeItem('metrBackY'); }
+}catch(e){}
 if('scrollRestoration' in history) history.scrollRestoration = 'manual';
 if(hadHashOnLoad) history.replaceState(null, '', location.pathname + location.search);
-window.scrollTo(0,0);
+window.scrollTo(0, backToY !== null ? backToY : 0);
 window.addEventListener('load', ()=>{
-  if(hadHashOnLoad){
+  if(backToY !== null){
+    // вернулись из каталога — держим сохранённое место, пока догружаются фото
+    let n = 0;
+    const t = setInterval(()=>{ window.scrollTo(0, backToY); if(++n >= 6) clearInterval(t); }, 200);
+  }else if(hadHashOnLoad){
     // если зашли по ссылке с #якорем — браузер пытается докрутить к нему
     // уже после загрузки; в течение первой секунды жёстко держим верх страницы
     let n = 0;
@@ -572,8 +636,17 @@ window.addEventListener('load', ()=>{
     setTimeout(()=>window.scrollTo(0,0), 0);
   }
 });
-window.addEventListener('beforeunload', ()=>window.scrollTo(0,0));
-window.addEventListener('pageshow', e=>{ if(e.persisted) window.scrollTo(0,0); });
+// Уход в каталог: запоминаем, где остановились. В этом случае скролл вверх
+// не сбрасываем — так браузер может вернуть страницу из кэша мгновенно.
+let leavingToCatalog = false;
+document.querySelectorAll('a[href*="metropol-auto.by"]').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    leavingToCatalog = true;
+    try{ sessionStorage.setItem('metrBackY', String(window.scrollY || window.pageYOffset || 0)); }catch(e){}
+  });
+});
+window.addEventListener('beforeunload', ()=>{ if(!leavingToCatalog) window.scrollTo(0,0); });
+window.addEventListener('pageshow', e=>{ if(e.persisted && !leavingToCatalog) window.scrollTo(0,0); });
 
 // ---------- якорные ссылки: плавный скролл с учётом фиксированной шапки ----------
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -588,6 +661,53 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(history.replaceState) history.replaceState(null,'',location.pathname + location.search);
   });
 });
+
+// ---------- ФОТОГАЛЕРЕЯ: полноэкранный просмотр со свайпом ----------
+(function(){
+  const items = Array.from(document.querySelectorAll('.gal-item'));
+  const lb = document.getElementById('lb');
+  if(!items.length || !lb) return;
+  const lbImg = document.getElementById('lbImg');
+  const lbCount = document.getElementById('lbCount');
+  let idx = 0;
+  function preload(i){
+    const img = items[(i+items.length)%items.length].querySelector('img');
+    const pre = new Image(); pre.src = img.dataset.full;
+  }
+  function open(i){
+    idx = (i+items.length)%items.length;
+    const img = items[idx].querySelector('img');
+    lbImg.src = img.dataset.full;
+    lbImg.alt = img.alt;
+    lbCount.textContent = (idx+1)+' / '+items.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    preload(idx+1); preload(idx-1);
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(()=>{ lbImg.src=''; }, 260);
+  }
+  items.forEach((it,i)=> it.addEventListener('click', ()=>open(i)));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', ()=>open(idx-1));
+  document.getElementById('lbNext').addEventListener('click', ()=>open(idx+1));
+  lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
+  document.addEventListener('keydown', e=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') open(idx-1);
+    if(e.key === 'ArrowRight') open(idx+1);
+  });
+  // свайп влево/вправо на тач-экранах
+  let tx = 0, ty = 0;
+  lb.addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+  lb.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if(Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) open(idx + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+})();
 
 // ---------- БЕГУЩАЯ СТРОКА ----------
 // Свежие выкупы подтягиваются из Google-таблицы (вкладка «Выкуплено») и встают в начало строки.
