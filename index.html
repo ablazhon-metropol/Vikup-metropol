@@ -270,6 +270,13 @@ footer a{color:var(--ink);text-decoration:none}
 .gal-item:hover{border-color:var(--bronze)}
 .gal-item:hover img{transform:scale(1.04)}
 .gal-item:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+.gal-item{position:relative}
+.gal-hide{display:none}
+.gal-more::after{content:'';position:absolute;inset:0;background:rgba(20,16,14,.55);z-index:1}
+.gal-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;background:rgba(34,28,26,.9);backdrop-filter:blur(8px);color:var(--ink);border:1px solid var(--bronze);border-radius:999px;padding:10px 22px;font-family:var(--font-d);font-weight:700;font-size:15px;white-space:nowrap}
+.lot-photo{cursor:pointer}
+.lot-photo:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+.lot-badge{position:absolute;right:16px;bottom:16px;background:rgba(34,28,26,.85);backdrop-filter:blur(8px);color:var(--ink);border:1px solid rgba(179,157,136,.4);border-radius:999px;padding:8px 18px;font-family:var(--font-d);font-weight:700;font-size:13px}
 
 /* ---------- полноэкранный просмотр фото ---------- */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,14,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s;overscroll-behavior:contain;touch-action:pan-y}
@@ -345,9 +352,10 @@ footer a{color:var(--ink);text-decoration:none}
 <!-- Живая площадка (реальное фото с площадки) -->
 <div class="lot">
   <div class="wrap lot-in reveal">
-    <figure class="lot-photo">
+    <figure class="lot-photo" id="lotPhoto" role="button" tabindex="0" aria-label="Открыть фотоальбом площадки">
       <img src="assets/ploshadka.webp" alt="Площадка Метрополь Авто — автомобили в наличии" loading="lazy">
       <figcaption>Наша площадка · живое фото</figcaption>
+      <span class="lot-badge" id="lotBadge"></span>
     </figure>
     <div class="lot-text">
       <div class="sec-label">Живая площадка</div>
@@ -441,7 +449,7 @@ footer a{color:var(--ink);text-decoration:none}
         </div>
       </div>
       <div class="scen">
-        <div class="scen-img"><img src="assets/hero-gold.webp" alt="Автомобиль в салоне" loading="lazy" style="object-position:center 60%"></div>
+        <div class="scen-img"><img src="assets/komissiya.webp" alt="Наша площадка на закате — авто ждут продажи" loading="lazy" style="object-position:center 55%"></div>
         <div class="scen-body">
           <div class="tag">Дороже</div>
           <h3>Комиссия</h3>
@@ -547,16 +555,16 @@ footer a{color:var(--ink);text-decoration:none}
     <div class="gal-grid reveal">
       <button type="button" class="gal-item"><img src="img/gallery/01s.webp" data-full="img/gallery/01.webp" alt="Клиент Метрополь Авто у автомобиля с красным бантом" loading="lazy" decoding="async" width="600" height="800"></button>
       <button type="button" class="gal-item"><img src="img/gallery/02s.webp" data-full="img/gallery/02.webp" alt="Клиентка Метрополь Авто у нового Changan с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/03s.webp" data-full="img/gallery/03.webp" alt="Клиентка Метрополь Авто у серого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/03s.webp" data-full="img/gallery/03.webp" alt="Клиентка Метрополь Авто у серого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
       <button type="button" class="gal-item"><img src="img/gallery/04s.webp" data-full="img/gallery/04.webp" alt="Клиенты Метрополь Авто у Geely с бантом в день выдачи" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/05s.webp" data-full="img/gallery/05.webp" alt="Клиенты Метрополь Авто — выдача белого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/06s.webp" data-full="img/gallery/06.webp" alt="Клиенты Метрополь Авто у белого Geely с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/07s.webp" data-full="img/gallery/07.webp" alt="Клиентка Метрополь Авто у Peugeot с красным бантом" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/08s.webp" data-full="img/gallery/08.webp" alt="Клиенты Метрополь Авто у белого Chevrolet" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/09s.webp" data-full="img/gallery/09.webp" alt="Семья клиентов Метрополь Авто у Peugeot с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/10s.webp" data-full="img/gallery/10.webp" alt="Клиентка с дочкой у Geely — выдача в Метрополь Авто" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/11s.webp" data-full="img/gallery/11.webp" alt="Площадка Метрополь Авто на закате — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
-      <button type="button" class="gal-item"><img src="img/gallery/12s.webp" data-full="img/gallery/12.webp" alt="Площадка Метрополь Авто вечером — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/05s.webp" data-full="img/gallery/05.webp" alt="Клиенты Метрополь Авто — выдача белого Changan" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/06s.webp" data-full="img/gallery/06.webp" alt="Клиенты Метрополь Авто у белого Geely с бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/07s.webp" data-full="img/gallery/07.webp" alt="Клиентка Метрополь Авто у Peugeot с красным бантом" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/08s.webp" data-full="img/gallery/08.webp" alt="Клиенты Метрополь Авто у белого Chevrolet" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-more"><img src="img/gallery/09s.webp" data-full="img/gallery/09.webp" alt="Семья клиентов Метрополь Авто у Peugeot с бантом" loading="lazy" decoding="async" width="600" height="800"><span class="gal-badge" id="galBadge"></span></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/10s.webp" data-full="img/gallery/10.webp" alt="Клиентка с дочкой у Geely — выдача в Метрополь Авто" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/11s.webp" data-full="img/gallery/11.webp" alt="Площадка Метрополь Авто на закате — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
+      <button type="button" class="gal-item gal-hide"><img src="img/gallery/12s.webp" data-full="img/gallery/12.webp" alt="Площадка Метрополь Авто вечером — автомобили в наличии" loading="lazy" decoding="async" width="600" height="800"></button>
     </div>
   </div>
 </section>
@@ -663,23 +671,40 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 // ---------- ФОТОГАЛЕРЕЯ: полноэкранный просмотр со свайпом ----------
+// Два альбома: «Клиенты» (сетка галереи) и «Площадка» (фото площадки и салонов).
+// Чтобы добавить фото салонов — допишите строки вида ['img/…webp','Описание'] в массив lot ниже.
 (function(){
-  const items = Array.from(document.querySelectorAll('.gal-item'));
   const lb = document.getElementById('lb');
-  if(!items.length || !lb) return;
+  if(!lb) return;
+  const albums = {
+    gallery: Array.from(document.querySelectorAll('.gal-item')).map(it=>{
+      const img = it.querySelector('img');
+      return [img.dataset.full, img.alt];
+    }),
+    lot: [
+      ['assets/ploshadka.webp','Площадка Метрополь Авто днём — автомобили в наличии'],
+      ['img/gallery/11.webp','Площадка Метрополь Авто на закате'],
+      ['img/gallery/12.webp','Площадка Метрополь Авто вечером'],
+      ['assets/salon-fasad.webp','Фасад салона Метрополь Авто'],
+      ['assets/hero-showroom.webp','Салон Метрополь Авто изнутри'],
+      ['assets/sdelka.webp','Оформление сделки в Метрополь Авто']
+    ]
+  };
   const lbImg = document.getElementById('lbImg');
   const lbCount = document.getElementById('lbCount');
-  let idx = 0;
+  let list = albums.gallery, idx = 0;
   function preload(i){
-    const img = items[(i+items.length)%items.length].querySelector('img');
-    const pre = new Image(); pre.src = img.dataset.full;
+    const pre = new Image(); pre.src = list[(i+list.length)%list.length][0];
+  }
+  function openAlbum(name, i){
+    list = albums[name];
+    open(i);
   }
   function open(i){
-    idx = (i+items.length)%items.length;
-    const img = items[idx].querySelector('img');
-    lbImg.src = img.dataset.full;
-    lbImg.alt = img.alt;
-    lbCount.textContent = (idx+1)+' / '+items.length;
+    idx = (i+list.length)%list.length;
+    lbImg.src = list[idx][0];
+    lbImg.alt = list[idx][1];
+    lbCount.textContent = (idx+1)+' / '+list.length;
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
     preload(idx+1); preload(idx-1);
@@ -689,7 +714,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     document.body.style.overflow = '';
     setTimeout(()=>{ lbImg.src=''; }, 260);
   }
-  items.forEach((it,i)=> it.addEventListener('click', ()=>open(i)));
+  // бейджи «Ещё N» — считаются автоматически по размеру альбомов
+  const galBadge = document.getElementById('galBadge');
+  if(galBadge) galBadge.textContent = 'Ещё ' + (albums.gallery.length - 4);
+  const lotBadge = document.getElementById('lotBadge');
+  if(lotBadge) lotBadge.textContent = 'Ещё ' + (albums.lot.length - 1) + ' фото';
+  Array.from(document.querySelectorAll('.gal-item')).forEach((it,i)=> it.addEventListener('click', ()=>openAlbum('gallery', i)));
+  const lotPhoto = document.getElementById('lotPhoto');
+  if(lotPhoto){
+    lotPhoto.addEventListener('click', ()=>openAlbum('lot', 0));
+    lotPhoto.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openAlbum('lot', 0); } });
+  }
   document.getElementById('lbClose').addEventListener('click', close);
   document.getElementById('lbPrev').addEventListener('click', ()=>open(idx-1));
   document.getElementById('lbNext').addEventListener('click', ()=>open(idx+1));
